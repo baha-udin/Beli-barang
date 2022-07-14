@@ -1,6 +1,6 @@
 const mainColors = {
   teal: '#219EBC',
-  white: '#f4f4f4',
+  white: '#ffff',
   black: '#34364A',
   gray: '#8D92A3',
   red: '#D9435E',
@@ -19,7 +19,7 @@ export const Colors = {
   },
   background: {
     primary: mainColors.teal,
-    white: mainColors.white,
+    white: '#F6F8FD',
     gray: mainColors.gray,
     disable: mainColors.gray,
     red: mainColors.red,
@@ -27,5 +27,6 @@ export const Colors = {
   },
   border: {
     gray: mainColors.gray,
+    black: mainColors.black,
   },
 };
