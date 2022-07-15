@@ -7,7 +7,12 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import {Header} from '../../Components/Molecules';
+import {
+  ButtonCustom,
+  Gap,
+  Header,
+  TextInputCustom,
+} from '../../Components/Atoms';
 import {Colors, resHeight, resWidth, Fonts} from './../../Utils';
 
 const Login = ({navigation}) => {
@@ -17,29 +22,27 @@ const Login = ({navigation}) => {
       <Header title={'Login'} subtitle="Let's Begin" />
       <View style={styles.content}>
         {/* section email */}
-        <View style={styles.section}>
-          <Text style={styles.label}>Email:</Text>
-          <TextInput placeholder="input your email" style={styles.textInput} />
-        </View>
+        <TextInputCustom
+          label="Email:"
+          placeholder={'Input your email here..'}
+        />
         {/* section password */}
-        <View style={styles.section}>
-          <Text style={styles.label}>Password:</Text>
-          <TextInput
-            placeholder="input your password"
-            secureTextEntry={true}
-            style={styles.textInput}
-          />
-        </View>
-        <TouchableOpacity
-          style={styles.buttonLogin}
-          onPress={() => navigation.replace('Menu')}>
-          <Text style={styles.labelButton}>Login</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttonRegister}
-          onPress={() => navigation.replace('Register')}>
-          <Text style={styles.labelButton}>Create new Account</Text>
-        </TouchableOpacity>
+        <TextInputCustom
+          label="Password:"
+          placeholder={'input password here...'}
+          secureTextEntry={true}
+        />
+        <Gap height={20} />
+        <ButtonCustom
+          text={'Login'}
+          onPress={() => navigation.replace('Menu')}
+        />
+        <Gap height={10} />
+        <ButtonCustom
+          text={'Create new Account'}
+          onPress={() => navigation.navigate('Register')}
+          color={Colors.background.gray}
+        />
       </View>
     </View>
   );
@@ -61,36 +64,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 12,
   },
-  section: {
-    marginBottom: 16,
-  },
-  label: {
-    fontSize: 16,
-    fontFamily: Fonts.primary[400],
-    color: Colors.text.primary,
-    marginBottom: 12,
-  },
-  textInput: {
-    paddingHorizontal: 16,
-    borderColor: Colors.border.black,
-    borderWidth: 0.7,
-    borderRadius: 10,
-    paddingVertical: resHeight(10),
-    color: Colors.text.primary,
-    fontSize: 13,
-    letterSpacing: 1,
-  },
   buttonLogin: {
     backgroundColor: Colors.background.primary,
     paddingVertical: resHeight(10),
     borderRadius: 8,
-    marginTop: resHeight(16),
   },
   buttonRegister: {
     backgroundColor: Colors.background.gray,
     paddingVertical: resHeight(10),
     borderRadius: 8,
-    marginTop: resHeight(8),
   },
   labelButton: {
     color: Colors.text.white,

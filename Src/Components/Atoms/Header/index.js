@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, Platform, TouchableOpacity} from 'react-native';
-import {Colors, resHeight, resWidth, Fonts} from './../../../Utils';
-import {IconBack} from './../../../Assets/icons';
+import {Colors, resHeight, resWidth, Fonts} from '../../../Utils';
+import {IconBack} from '../../../Assets/icons';
 
 const Header = ({title, subtitle, onBack}) => {
   return (

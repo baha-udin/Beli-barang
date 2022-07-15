@@ -7,7 +7,12 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import {Header} from '../../Components/Molecules';
+import {
+  Header,
+  TextInputCustom,
+  ButtonCustom,
+  Gap,
+} from '../../Components/Atoms';
 import {Colors, resHeight, resWidth, Fonts} from './../../Utils';
 
 const Register = ({navigation}) => {
@@ -20,37 +25,31 @@ const Register = ({navigation}) => {
         onBack={() => navigation.navigate('Login')}
       />
       <View style={styles.content}>
+        <TextInputCustom
+          label={'Full name:'}
+          placeholder={`what's your name`}
+        />
         {/* section email */}
-        <View style={styles.section}>
-          <Text style={styles.label}>Full name:</Text>
-          <TextInput placeholder="what's your name?" style={styles.textInput} />
-        </View>
-        {/* section email */}
-        <View style={styles.section}>
-          <Text style={styles.label}>Email:</Text>
-          <TextInput placeholder="input your email" style={styles.textInput} />
-        </View>
+        <TextInputCustom
+          label={'Email:'}
+          placeholder={`input your email here`}
+        />
         {/* section password */}
-        <View style={styles.section}>
-          <Text style={styles.label}>Password:</Text>
-          <TextInput
-            placeholder="input your password"
-            secureTextEntry={true}
-            style={styles.textInput}
-          />
-        </View>
+        <TextInputCustom
+          label={'Password:'}
+          placeholder={`input your password here...`}
+          secureTextEntry={true}
+        />
+        <Gap height={20} />
         {/* section Button CTA */}
-        <TouchableOpacity
-          style={styles.buttonLogin}
-          onPress={() => navigation.replace('Menu')}>
-          <Text style={styles.labelButton}>Register</Text>
-        </TouchableOpacity>
+        <ButtonCustom
+          text={'Register'}
+          onPress={() => navigation.replace('Menu')}
+        />
       </View>
     </View>
   );
 };
-
-export default Register;
 
 const styles = StyleSheet.create({
   container: {
@@ -104,3 +103,5 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.primary[500],
   },
 });
+
+export default Register;
