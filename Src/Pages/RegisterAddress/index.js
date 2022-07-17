@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -12,10 +12,20 @@ import {
   TextInputCustom,
   ButtonCustom,
   Gap,
+  SelectPicker,
 } from '../../Components/Atoms';
 import {Colors, resHeight, resWidth, Fonts} from './../../Utils';
+import SelectDropdown from 'react-native-select-dropdown';
+
+const ListCities = ['Yogyakarta', 'Solo', 'Semarang', 'Magelang'];
 
 const RegisterAddress = ({navigation}) => {
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [provinsi, setProvinsi] = useState('');
+  const [kota, setKota] = useState('');
+  const [kecamatan, setKecamatan] = useState('');
+  const [address, setAddress] = useState('');
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle={'dark-content'} />
@@ -26,19 +36,39 @@ const RegisterAddress = ({navigation}) => {
       />
       <View style={styles.content}>
         <TextInputCustom
-          label="Whatsapp number"
-          placeholder="input number here..."
+          label="Nomor WhatsApp"
+          placeholder="masukkan nomor w.a aktif"
+          value={phoneNumber}
+          onChangeText={value => setPhoneNumber(value)}
         />
-        <TextInputCustom label="Address" placeholder="input your address" />
         <TextInputCustom
-          label="House number"
-          placeholder="input your specific house number"
+          label="Provinsi"
+          placeholder="masukkan domisili anda"
+          value={provinsi}
+          onChangeText={value => setProvinsi(value)}
         />
-
+        <TextInputCustom
+          label="Kota"
+          placeholder="dimana kota anda"
+          value={kota}
+          onChangeText={value => setKota(value)}
+        />
+        <TextInputCustom
+          label="Kecamatan"
+          placeholder="masukkan nama kecamatan"
+          value={kecamatan}
+          onChangeText={value => setKecamatan(value)}
+        />
+        <TextInputCustom
+          label="Alamat lengkap"
+          placeholder="input your address"
+          value={address}
+          onChangeText={value => setAddress(value)}
+        />
         <Gap height={20} />
         <ButtonCustom
           text={'Register Now'}
-          // onPress={() => navigation.replace('RegisterAddress')}
+          onPress={() => navigation.navigate('RegisterSuccess')}
         />
       </View>
     </View>

@@ -51,7 +51,7 @@ const Register = ({navigation}) => {
         <Gap height={20} />
         <ButtonCustom
           text={'Continue'}
-          onPress={() => navigation.replace('RegisterAddress')}
+          onPress={() => navigation.navigate('RegisterAddress')}
         />
       </View>
     </View>

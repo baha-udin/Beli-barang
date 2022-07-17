@@ -2,7 +2,13 @@ import React from 'react';
 import {StyleSheet, Text, View, TextInput} from 'react-native';
 import {Fonts, Colors, resWidth, resHeight} from '../../../Utils';
 
-const TextInputCustom = ({label, placeholder, secureTextEntry}) => {
+const TextInputCustom = ({
+  label,
+  placeholder,
+  secureTextEntry,
+  value,
+  onChangeText,
+}) => {
   return (
     <View style={styles.section}>
       <Text style={styles.label}>{label}</Text>
@@ -10,6 +16,8 @@ const TextInputCustom = ({label, placeholder, secureTextEntry}) => {
         placeholder={placeholder}
         style={styles.textInput}
         secureTextEntry={secureTextEntry}
+        value={value}
+        onChangeText={onChangeText}
       />
     </View>
   );
