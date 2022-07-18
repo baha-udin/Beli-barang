@@ -18,13 +18,16 @@ import {
   RegisterSuccess,
   Splash,
 } from './../Pages';
+import {BottomNavigator} from '../Components/Molecules/';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const Menu = () => {
   return (
-    <Tab.Navigator screenOptions={{headerShown: false}}>
+    <Tab.Navigator
+      screenOptions={{headerShown: false}}
+      tabBar={props => <BottomNavigator {...props} />}>
       <Tab.Screen component={Home} name="Home" />
       <Tab.Screen component={Order} name="Order" />
       <Tab.Screen component={Profile} name="Profile" />
