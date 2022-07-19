@@ -5,6 +5,7 @@ const mainColors = {
   gray: '#8D92A3',
   gray2: '#F0F0F0',
   red: '#D9435E',
+  whiteBackground: '#FAFAFC',
 };
 
 export const Colors = {
@@ -21,6 +22,7 @@ export const Colors = {
   background: {
     primary: mainColors.teal,
     white: '#F6F8FD',
+    whiteBackground: mainColors.whiteBackground,
     gray: mainColors.gray,
     gray2: mainColors.gray2,
     disable: mainColors.gray,
