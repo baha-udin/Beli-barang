@@ -2,10 +2,6 @@ package com.belibarang;
 
 import com.facebook.react.ReactActivity;
 import android.os.Bundle;
-// react-native-splash-screen >= 0.3.1
-import org.devio.rn.splashscreen.SplashScreen;
-// react-native-splash-screen < 0.3.1
-import com.cboy.rn.splashscreen.SplashScreen; 
 
 public class MainActivity extends ReactActivity {
 
@@ -17,15 +13,9 @@ public class MainActivity extends ReactActivity {
   protected String getMainComponentName() {
     return "beliBarang";
   }
-  // for react navigation
+  // // for react navigation
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(null);
-  }
-  // for react-native-splash
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-      SplashScreen.show(this);  
-      super.onCreate(savedInstanceState);
   }
 }

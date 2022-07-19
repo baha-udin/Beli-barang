@@ -12,9 +12,10 @@ target 'beliBarang' do
     :hermes_enabled => false
   )
 
-  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
 
   pod 'react-native-pager-view', :path => '../node_modules/react-native-pager-view'
+
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
 
   target 'beliBarangTests' do
     inherit! :complete
