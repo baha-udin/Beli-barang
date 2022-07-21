@@ -8,13 +8,12 @@ const App = () => {
   useEffect(() => {
     SplashScreen.hide();
   }, []);
-
   return (
-    <>
+    <View style={{flex: 1}}>
       <NavigationContainer>
         <Router />
       </NavigationContainer>
-    </>
+    </View>
   );
 };
 

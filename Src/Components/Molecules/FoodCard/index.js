@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import {FoodDummy1, StarOn, StarOff} from '../../../Assets';
-import {Colors, Fonts} from '../../../Utils';
+import {Colors, Fonts, resWidth} from '../../../Utils';
 import {Rating} from '../../Atoms';
 
 const FoodCard = ({image, title, onPress}) => {
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   title: {
     marginTop: 12,
     paddingLeft: 8,
-    fontSize: 16,
+    fontSize: resWidth(15),
     fontFamily: Fonts.primary[400],
     color: Colors.text.primary,
     letterSpacing: 0.5,
