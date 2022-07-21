@@ -8,6 +8,7 @@ import {
   IconProfile,
   IconProfileInActive,
 } from '../../../Assets';
+import {Colors, resWidth} from '../../../Utils';
 
 const Icon = ({label, focus}) => {
   switch (label) {
@@ -24,7 +25,13 @@ const Icon = ({label, focus}) => {
 
 const BottomNavigator = ({state, descriptors, navigation}) => {
   return (
-    <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+    <View
+      style={{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        borderTopColor: Colors.border.gray,
+        borderTopWidth: 0.25,
+      }}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
         const label =
@@ -68,7 +75,11 @@ const BottomNavigator = ({state, descriptors, navigation}) => {
             style={styles.container}>
             <Icon label={label} focus={isFocused} />
             <Text
-              style={{color: isFocused ? '#219EBC' : '#E2E2E2', paddingTop: 8}}>
+              style={{
+                color: isFocused ? '#219EBC' : '#E2E2E2',
+                paddingTop: 8,
+                fontSize: resWidth(13),
+              }}>
               {label}
             </Text>
           </TouchableOpacity>

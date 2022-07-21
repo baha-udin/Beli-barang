@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
   },
   label: {
-    fontSize: 17,
+    fontSize: resWidth(16),
     paddingHorizontal: 20,
     paddingBottom: 12,
     fontFamily: Fonts.primary[400],
