@@ -8,7 +8,8 @@ import {
   IconProfile,
   IconProfileInActive,
 } from '../../../Assets';
-import {Colors, resWidth} from '../../../Utils';
+
+import {Fonts, resWidth} from '../../../Utils';
 
 const Icon = ({label, focus}) => {
   switch (label) {
@@ -29,8 +30,7 @@ const BottomNavigator = ({state, descriptors, navigation}) => {
       style={{
         flexDirection: 'row',
         justifyContent: 'space-between',
-        borderTopColor: Colors.border.gray,
-        borderTopWidth: 0.25,
+        backgroundColor: 'white',
       }}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
@@ -77,8 +77,9 @@ const BottomNavigator = ({state, descriptors, navigation}) => {
             <Text
               style={{
                 color: isFocused ? '#219EBC' : '#E2E2E2',
-                paddingTop: 8,
+                fontWeight: isFocused ? '500' : '200',
                 fontSize: resWidth(13),
+                paddingTop: 2,
               }}>
               {label}
             </Text>
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     paddingTop: 8,
-    paddingBottom: 12,
+    paddingBottom: 8,
     paddingHorizontal: 40,
   },
 });

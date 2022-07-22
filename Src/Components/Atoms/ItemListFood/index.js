@@ -8,8 +8,10 @@ const ItemListFood = ({onPress}) => {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <View style={styles.container}>
-        <View style={styles.wrapImage}>
-          <Image source={FoodDummy6} style={styles.image} />
+        <View style={styles.wrapLeft}>
+          <View style={styles.wrapImage}>
+            <Image source={FoodDummy6} style={styles.image} />
+          </View>
           <View style={styles.wrapText}>
             <Text style={styles.title}>Zuppa Soup</Text>
             <Text style={styles.price}>Rp. 25.000</Text>
@@ -17,6 +19,7 @@ const ItemListFood = ({onPress}) => {
         </View>
         <View style={styles.wrapRating}>
           <Rating />
+          <Text>4.5</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -32,6 +35,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 8,
   },
+  wrapLeft: {flexDirection: 'row', alignItems: 'center'},
   wrapImage: {
     width: 60,
     height: 60,
@@ -51,12 +55,18 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontFamily: Fonts.primary[400],
-    color: Colors.text.primary,
+    color: 'black',
+    opacity: 0.9,
   },
   price: {
     fontSize: 13,
     fontFamily: Fonts.primary[400],
-    color: Colors.text.secondary,
+    color: 'black',
+    opacity: 0.6,
   },
-  wrapRating: {},
+  wrapRating: {
+    flexDirection: 'row',
+    paddingHorizontal: 6,
+    backgroundColor: 'white',
+  },
 });

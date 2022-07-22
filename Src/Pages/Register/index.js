@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -16,6 +16,34 @@ import {
 import {Colors, resHeight, resWidth, Fonts} from './../../Utils';
 
 const Register = ({navigation}) => {
+  // const [user, setUser] = useState({
+  //   fullName: '',
+  //   email: '',
+  //   password: '',
+  // })
+
+  // const onChangeFullName = () => {
+  //   setUser({...user, fullName: value});
+  // };
+  // const onChangeEmail = () => {
+  //   setUser({...user, email: value});
+  // };
+  // const onChangePassword = () => {
+  //   setUser({...user, password: value});
+  // };
+
+  // const handleRegister = () => {
+  //   if (!user.fullName) {
+  //     Alert.alert('nama lengkap masih kosong nih, yuk diisi dulu');
+  //   } else if (!user.email) {
+  //     Alert.alert('Ups email masih kosong nih, yuk diisi dulu');
+  //   } else if (!user.password) {
+  //     Alert.alert('Ups password masih kosong nih, yuk diisi dulu');
+  //   } else {
+  //     navigation.navigate('RegisterAddress');
+  //     console.log('Register berhasil ya');
+  //   }
+  // };
   return (
     <View style={styles.container}>
       <StatusBar barStyle={'dark-content'} />
@@ -36,22 +64,28 @@ const Register = ({navigation}) => {
         <TextInputCustom
           label={'Full name:'}
           placeholder={`what's your name`}
+          // value={user.fullName}
+          // onChangeText={onChangeFullName}
         />
 
         <TextInputCustom
           label={'Email:'}
           placeholder={`input your email here`}
+          // value={user.email}
+          // onChangeText={onChangeEmail}
         />
 
         <TextInputCustom
           label={'Password:'}
           placeholder={`input your password here...`}
           secureTextEntry={true}
+          // value={user.password}
+          // onChangeText={onChangePassword}
         />
         <Gap height={20} />
         <ButtonCustom
           text={'Continue'}
-          onPress={() => navigation.navigate('RegisterAddress')}
+          // onPress={handleRegister}
         />
       </View>
     </View>

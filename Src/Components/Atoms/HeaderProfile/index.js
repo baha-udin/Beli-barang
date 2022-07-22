@@ -5,9 +5,9 @@ import {
   View,
   TouchableOpacity,
   Image,
-  StatusBar,
+  Platform,
 } from 'react-native';
-import {Colors, Fonts, resHeight, resWidth} from '../../../Utils';
+import {Colors, Fonts, resWidth} from '../../../Utils';
 
 const HeaderProfile = ({imgProfile, greeting, name}) => {
   return (
@@ -37,16 +37,17 @@ const styles = StyleSheet.create({
     borderBottomColor: Colors.border.gray,
     borderBottomWidth: 0.2,
     backgroundColor: 'white',
+    paddingTop: Platform.OS === 'ios' ? '15%' : '5%',
   },
   sectionLeft: {},
   greeting: {
     fontSize: resWidth(16),
-    fontFamily: Fonts.primary[400],
+    fontFamily: Fonts.primary[300],
     color: Colors.text.secondary,
   },
   name: {
-    fontSize: resHeight(18),
-    fontFamily: Fonts.primary[500],
+    fontSize: resWidth(18),
+    fontFamily: Fonts.primary[600],
     color: Colors.text.primary,
   },
 });

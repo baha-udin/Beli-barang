@@ -1,6 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, Text, View, useWindowDimensions} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  useWindowDimensions,
+  Dimensions,
+} from 'react-native';
 import {resHeight, resWidth, Colors, Fonts} from './../../../Utils';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {ItemListFood} from '../../Atoms';
@@ -18,10 +23,9 @@ const renderTabBar = props => (
   />
 );
 
-const NewTaste = () => {
-  const navigation = useNavigation();
+const NewTaste = ({navigation}) => {
   return (
-    <View style={styles.wrapTab}>
+    <View style={{paddingTop: 8, paddingHorizontal: 24}}>
       <ItemListFood />
       <ItemListFood />
       <ItemListFood />
@@ -31,16 +35,20 @@ const NewTaste = () => {
 
 const Popular = ({navigation}) => {
   return (
-    <View style={styles.wrapTab}>
-      <Text>Popular</Text>
+    <View style={{paddingTop: 8, paddingHorizontal: 24}}>
+      <ItemListFood />
+      <ItemListFood />
+      <ItemListFood />
     </View>
   );
 };
 
 const Recommended = ({navigation}) => {
   return (
-    <View style={styles.wrapTab}>
-      <Text>New Recommendation</Text>
+    <View style={{paddingTop: 8, paddingHorizontal: 24}}>
+      <ItemListFood />
+      <ItemListFood />
+      <ItemListFood />
     </View>
   );
 };
