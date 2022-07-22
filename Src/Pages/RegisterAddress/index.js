@@ -6,6 +6,7 @@ import {
   StatusBar,
   TextInput,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import {
   Header,
@@ -30,37 +31,37 @@ const RegisterAddress = ({navigation}) => {
     <View style={styles.container}>
       <StatusBar barStyle={'dark-content'} />
       <Header
-        title={'Address'}
+        title={'Address:'}
         subtitle="Make sure it’s valid"
         onBack={() => navigation.navigate('Register')}
       />
-      <View style={styles.content}>
+      <ScrollView style={styles.content}>
         <TextInputCustom
-          label="Nomor WhatsApp"
+          label="Nomor WhatsApp:"
           placeholder="masukkan nomor w.a aktif"
           value={phoneNumber}
           onChangeText={value => setPhoneNumber(value)}
         />
         <TextInputCustom
-          label="Provinsi"
+          label="Provinsi:"
           placeholder="masukkan domisili anda"
           value={provinsi}
           onChangeText={value => setProvinsi(value)}
         />
         <TextInputCustom
-          label="Kota"
+          label="Kota:"
           placeholder="dimana kota anda"
           value={kota}
           onChangeText={value => setKota(value)}
         />
         <TextInputCustom
-          label="Kecamatan"
+          label="Kecamatan:"
           placeholder="masukkan nama kecamatan"
           value={kecamatan}
           onChangeText={value => setKecamatan(value)}
         />
         <TextInputCustom
-          label="Alamat lengkap"
+          label="Alamat lengkap:"
           placeholder="input your address"
           value={address}
           onChangeText={value => setAddress(value)}
@@ -70,7 +71,7 @@ const RegisterAddress = ({navigation}) => {
           text={'Register Now'}
           onPress={() => navigation.navigate('RegisterSuccess')}
         />
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -84,9 +85,9 @@ const styles = StyleSheet.create({
   },
   content: {
     flexDirection: 'column',
-    marginTop: '20%',
+    marginTop: '5%',
     marginHorizontal: resWidth(20),
-    paddingHorizontal: resWidth(12),
+    paddingHorizontal: resWidth(16),
     paddingVertical: resHeight(20),
     backgroundColor: 'white',
     borderRadius: 12,

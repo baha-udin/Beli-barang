@@ -48,8 +48,13 @@ static void InitializeFlipper(UIApplication *application) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-  // for react-native-splash-screen
-  [RNSplashScreen show]
+
+  // for React-native-Splash
+  [RNSplashScreen show];
+  // hide load bridge after splash
+  //  UIStoryboard *sb = [UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil];
+  //  UIViewController *vc = [sb instantiateInitialViewController];
+  //  rootView.loadingView = vc.view;
   return YES;
 }
 

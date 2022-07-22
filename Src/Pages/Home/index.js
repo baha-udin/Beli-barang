@@ -17,7 +17,7 @@ import {
 } from './../../Assets';
 import {resHeight, resWidth, Colors, Fonts} from './../../Utils';
 import {FoodCard, HomeTabSection} from '../../Components/Molecules';
-import {Gap, HeaderProfile} from './../../Components/Atoms';
+import {Gap, HeaderProfile, ItemListFood} from './../../Components/Atoms';
 
 const Home = () => {
   return (
@@ -28,10 +28,10 @@ const Home = () => {
         name={'Clau'}
         imgProfile={DummyProfile1}
       />
-      <Gap height={12} />
+      <Gap height={8} />
       {/* Section Card Food 1 */}
       <View style={styles.wrapCardFood}>
-        <Text style={styles.label}>Let's get some food</Text>
+        <Text style={styles.label}>Let's get some of foods</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <Gap width={20} />
           <FoodCard image={FoodDummy1} title="Cherry Healthy" />
@@ -56,6 +56,7 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: Colors.background.whiteBackground,
   },
 
   wrapCardFood: {
@@ -63,11 +64,12 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
   },
   label: {
-    fontSize: resWidth(16),
+    fontSize: resWidth(14),
     paddingHorizontal: 20,
-    paddingBottom: 12,
-    fontFamily: Fonts.primary[400],
+    paddingBottom: 8,
+    fontFamily: Fonts.primary[300],
     color: Colors.text.primary,
+    opacity: 0.8,
   },
   wrapTabBar: {
     flex: 1,
