@@ -1,6 +1,13 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
-import {Colors, Fonts} from '../../../Utils';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  Platform,
+} from 'react-native';
+import {Colors, Fonts, resWidth} from '../../../Utils';
 
 const HeaderProfile = ({imgProfile, greeting, name}) => {
   return (
@@ -28,17 +35,17 @@ const styles = StyleSheet.create({
     borderBottomColor: Colors.border.gray,
     borderBottomWidth: 0.2,
     backgroundColor: 'white',
-    paddingTop: '15%',
+    paddingTop: Platform.OS === 'ios' ? '15%' : '5%',
   },
   sectionLeft: {},
   greeting: {
-    fontSize: 16,
-    fontFamily: Fonts.primary[400],
+    fontSize: resWidth(16),
+    fontFamily: Fonts.primary[300],
     color: Colors.text.secondary,
   },
   name: {
-    fontSize: 20,
-    fontFamily: Fonts.primary[500],
+    fontSize: resWidth(18),
+    fontFamily: Fonts.primary[600],
     color: Colors.text.primary,
   },
 });

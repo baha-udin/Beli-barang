@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,6 +6,7 @@ import {
   StatusBar,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import {
   ButtonCustom,
@@ -16,6 +17,30 @@ import {
 import {Colors, resHeight, resWidth, Fonts} from './../../Utils';
 
 const Login = ({navigation}) => {
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  });
+
+  const onChangeEmail = () => {
+    setUser({...user, email: value});
+  };
+
+  const onChangePassword = () => {
+    setUser({...user, password: value});
+  };
+
+  const handleLogin = () => {
+    if (!user.email) {
+      Alert.alert('Email masih kosong nih, yuk diisi dulu');
+    } else if (!user.password) {
+      Alert.alert('Ups password masih kosong nih, yuk diisi dulu');
+    } else {
+      navigation.navigate('Register');
+      console.log('Login berhasil ya');
+    }
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle={'dark-content'} />
@@ -25,12 +50,16 @@ const Login = ({navigation}) => {
         <TextInputCustom
           label="Email:"
           placeholder={'Input your email here..'}
+          value={user.email}
+          onChangeText={onChangeEmail}
         />
         {/* section password */}
         <TextInputCustom
           label="Password:"
           placeholder={'input password here...'}
           secureTextEntry={true}
+          value={user.password}
+          onChangeText={onChangePassword}
         />
         <Gap height={20} />
         <ButtonCustom
@@ -40,7 +69,7 @@ const Login = ({navigation}) => {
         <Gap height={10} />
         <ButtonCustom
           text={'Create new Account'}
-          onPress={() => navigation.navigate('Register')}
+          onPress={handleLogin}
           color={Colors.background.gray}
         />
       </View>
