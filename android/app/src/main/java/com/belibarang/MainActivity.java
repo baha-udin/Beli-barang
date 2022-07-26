@@ -3,6 +3,8 @@ package com.belibarang;
 import com.facebook.react.ReactActivity;
 import android.os.Bundle;
 
+import org.devio.rn.splashscreen.SplashScreen; // for react-native-splash-screen
+
 public class MainActivity extends ReactActivity {
 
   /**
@@ -16,6 +18,7 @@ public class MainActivity extends ReactActivity {
   // // for react navigation
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(null);
+    super.onCreate(savedInstanceState);
+    SplashScreen.show(this); 
   }
 }

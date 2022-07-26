@@ -8,6 +8,7 @@ import {
   IconProfile,
   IconProfileInActive,
 } from '../../../Assets';
+
 import {Fonts, resWidth} from '../../../Utils';
 
 const Icon = ({label, focus}) => {

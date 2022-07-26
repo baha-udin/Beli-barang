@@ -12,6 +12,7 @@ import {Colors, Fonts, resWidth} from '../../../Utils';
 const HeaderProfile = ({imgProfile, greeting, name}) => {
   return (
     <View style={styles.wrapHeader}>
+      <StatusBar barStyle={'light-content'} />
       <View style={styles.sectionLeft}>
         <Text style={styles.greeting}>{greeting}</Text>
         <Text style={styles.name}>{name}</Text>
@@ -30,6 +31,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingTop: '10%',
     paddingBottom: 12,
     paddingHorizontal: 20,
     borderBottomColor: Colors.border.gray,
