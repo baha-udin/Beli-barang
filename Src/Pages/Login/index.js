@@ -22,22 +22,26 @@ const Login = ({navigation}) => {
     password: '',
   });
 
-  const onChangeEmail = () => {
+  const onChangeEmail = value => {
     setUser({...user, email: value});
   };
 
-  const onChangePassword = () => {
+  const onChangePassword = value => {
     setUser({...user, password: value});
   };
 
   const handleLogin = () => {
-    if (!user.email) {
-      Alert.alert('Email masih kosong nih, yuk diisi dulu');
-    } else if (!user.password) {
-      Alert.alert('Ups password masih kosong nih, yuk diisi dulu');
-    } else {
-      navigation.navigate('Register');
-      console.log('Login berhasil ya');
+    try {
+      if (!user.email) {
+        Alert.alert('Email masih kosong nih, yuk diisi dulu');
+      } else if (!user.password || user.password.length <= 6) {
+        Alert.alert('Pastikan password sudah terisi & minimal 6 karakter ya..');
+      } else {
+        navigation.navigate('Register');
+        console.log('Login berhasil ya');
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -62,14 +66,11 @@ const Login = ({navigation}) => {
           onChangeText={onChangePassword}
         />
         <Gap height={20} />
-        <ButtonCustom
-          text={'Login'}
-          onPress={() => navigation.replace('Menu')}
-        />
+        <ButtonCustom text={'Login'} onPress={handleLogin} />
         <Gap height={10} />
         <ButtonCustom
           text={'Create new Account'}
-          onPress={handleLogin}
+          onPress={() => navigation.navigate('Register')}
           color={Colors.background.gray}
         />
       </View>

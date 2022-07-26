@@ -9,10 +9,17 @@ const App = () => {
     SplashScreen.hide();
   });
 
+  const isLightTheme = useColorScheme() == 'black';
   return (
-    <NavigationContainer>
-      <Router />
-    </NavigationContainer>
+    <>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor={isLightTheme ? 'black' : 'white'}
+      />
+      <NavigationContainer>
+        <Router />
+      </NavigationContainer>
+    </>
   );
 };
 

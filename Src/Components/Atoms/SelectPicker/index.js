@@ -1,70 +1,111 @@
-import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {StyleSheet, Text, View, ScrollView, Button} from 'react-native';
 import {Colors, resHeight, Fonts, resWidth} from '../../../Utils';
-import SelectDropdown from 'react-native-select-dropdown';
 import {IconArrowDown} from '../../../Assets/icons';
+import SelectDropdown from 'react-native-select-dropdown';
 
-const countries = ['Egypt', 'Canada', 'Australia', 'Ireland'];
-
-const SelectPicker = ({label, data, onSelect}) => {
+const SelectPicker = ({
+  title,
+  data,
+  onSelect,
+  renderCustomizedButtonChild,
+  renderCustomizedRowChild,
+  searchPlaceHolder,
+}) => {
   return (
-    <View>
-      <Text style={styles.label}>{label}</Text>
-      <View>
+    <View style={styles.container}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        alwaysBounceVertical={false}
+        style={styles.wrap}>
+        <Text style={styles.title}>{title}</Text>
         <SelectDropdown
           data={data}
-          buttonStyle={styles.wrapButton}
-          buttonTextStyle={styles.labelButton}
-          renderDropdownIcon={IconArrowDown}
-          dropdownIconPosition={'right'}
-          dropdownStyle={styles.dropDown}
-          rowTextStyle={styles.textDropDown}
+          buttonStyle={styles.wrapDropdown}
           onSelect={onSelect}
-          buttonTextAfterSelection={(selectedItem, index) => {
-            return selectedItem;
-          }}
-          rowTextForSelection={(item, index) => {
-            return item;
-          }}
+          // custom button dropdown
+          renderCustomizedButtonChild={renderCustomizedButtonChild}
+          // custom list dropdown
+          renderCustomizedRowChild={renderCustomizedRowChild}
+          dropdownStyle={styles.wrapDropDown}
+          rowStyle={styles.LineDropdown}
+          selectedRowStyle={styles.dropdownWhenSelected}
+          search
+          searchInputStyle={styles.wrapSearchDropdown}
+          searchPlaceHolder={searchPlaceHolder}
+          searchPlaceHolderColor={'black'}
         />
-      </View>
+      </ScrollView>
     </View>
   );
 };
 
-export default SelectPicker;
-
 const styles = StyleSheet.create({
-  label: {
-    fontSize: 16,
+  container: {
+    flex: 1,
+    marginBottom: 16,
+  },
+  wrap: {
+    flex: 1,
+  },
+  title: {
+    fontSize: resWidth(14),
     fontFamily: Fonts.primary[400],
     color: Colors.text.primary,
-    marginBottom: 12,
+    marginBottom: 4,
   },
-  wrapButton: {
-    backgroundColor: 'white',
-    borderColor: Colors.border.gray,
-    borderWidth: 1,
-    borderRadius: 12,
+  wrapDropdown: {
     width: '100%',
+    paddingVertical: 0,
+    backgroundColor: 'white',
+    paddingHorizontal: 0,
+    borderColor: Colors.border.gray,
+    borderWidth: 0.5,
+    borderRadius: 8,
   },
-  labelButton: {
-    textAlign: 'left',
-    color: Colors.text.primary,
-    fontSize: 15,
+  wrapCustomButton: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    paddingHorizontal: 18,
+    backgroundColor: '#f8f8f8',
   },
-  dropDown: {
-    backgroundColor: Colors.background.white,
+  labelCustomButton: {
+    color: 'black',
+    textAlign: 'center',
+    fontWeight: '400',
+    fontSize: 16,
+    opacity: 0.8,
+  },
+  dropdownWhenSelected: {backgroundColor: 'rgba(0,0,0,0.1)'},
+  LineDropdown: {
+    backgroundColor: '#fff',
+    borderBottomColor: '#ccc',
+    height: 50,
+  },
+  stylingBarisdropdown: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    paddingHorizontal: 18,
     borderRadius: 10,
-    height: '30%',
-    marginTop: '-20%',
-    paddingVertical: 8,
   },
-  textDropDown: {
-    fontSize: resWidth(16),
-    letterSpacing: 0.3,
-    color: Colors.text.primary,
-    fontFamily: Fonts.primary[400],
-    paddingVertical: 8,
+  textdropdown: {
+    color: 'black',
+    textAlign: 'center',
+    fontWeight: '400',
+    fontSize: 16,
+    marginHorizontal: 12,
+  },
+  wrapSearchDropdown: {
+    backgroundColor: '#ffff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+    paddingHorizontal: 24,
+    borderRadius: 10,
   },
 });
+
+export default SelectPicker;

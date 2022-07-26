@@ -16,34 +16,34 @@ import {
 import {Colors, resHeight, resWidth, Fonts} from './../../Utils';
 
 const Register = ({navigation}) => {
-  // const [user, setUser] = useState({
-  //   fullName: '',
-  //   email: '',
-  //   password: '',
-  // })
+  const [user, setUser] = useState({
+    fullName: '',
+    email: '',
+    password: '',
+  });
 
-  // const onChangeFullName = () => {
-  //   setUser({...user, fullName: value});
-  // };
-  // const onChangeEmail = () => {
-  //   setUser({...user, email: value});
-  // };
-  // const onChangePassword = () => {
-  //   setUser({...user, password: value});
-  // };
+  const onChangeFullname = value => {
+    setUser({...user, fullName: value});
+  };
 
-  // const handleRegister = () => {
-  //   if (!user.fullName) {
-  //     Alert.alert('nama lengkap masih kosong nih, yuk diisi dulu');
-  //   } else if (!user.email) {
-  //     Alert.alert('Ups email masih kosong nih, yuk diisi dulu');
-  //   } else if (!user.password) {
-  //     Alert.alert('Ups password masih kosong nih, yuk diisi dulu');
-  //   } else {
-  //     navigation.navigate('RegisterAddress');
-  //     console.log('Register berhasil ya');
-  //   }
-  // };
+  const onChangeEmail = value => {
+    mbaha;
+    setUser({...user, email: value});
+  };
+
+  const onChangePassword = value => {
+    setUser({...user, password: value});
+  };
+
+  const handleRegister = () => {
+    try {
+      navigation.navigate('RegisterAddress');
+      console.log('Login berhasil ya');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle={'dark-content'} />
@@ -54,39 +54,34 @@ const Register = ({navigation}) => {
       />
       <View style={styles.content}>
         {/* Section upload photo */}
-        <View style={styles.photo}>
+        <TouchableOpacity style={styles.photo}>
           <View style={styles.borderPhoto}>
             <View style={styles.wrapPhoto}>
               <Text style={styles.labelPhoto}>Add Photo</Text>
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
         <TextInputCustom
           label={'Full name:'}
           placeholder={`what's your name`}
-          // value={user.fullName}
-          // onChangeText={onChangeFullName}
+          value={user.fullName}
+          onChangeText={onChangeFullname}
         />
-
         <TextInputCustom
           label={'Email:'}
           placeholder={`input your email here`}
-          // value={user.email}
-          // onChangeText={onChangeEmail}
+          value={user.email}
+          onChangeText={onChangeEmail}
         />
-
         <TextInputCustom
           label={'Password:'}
           placeholder={`input your password here...`}
           secureTextEntry={true}
-          // value={user.password}
-          // onChangeText={onChangePassword}
+          value={user.password}
+          onChangeText={onChangePassword}
         />
         <Gap height={20} />
-        <ButtonCustom
-          text={'Continue'}
-          // onPress={handleRegister}
-        />
+        <ButtonCustom text={'Continue'} onPress={handleRegister} />
       </View>
     </View>
   );
