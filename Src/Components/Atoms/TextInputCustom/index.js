@@ -8,6 +8,7 @@ const TextInputCustom = ({
   secureTextEntry,
   value,
   onChangeText,
+  keyboardType,
 }) => {
   return (
     <View style={styles.section}>
@@ -18,6 +19,7 @@ const TextInputCustom = ({
         secureTextEntry={secureTextEntry}
         value={value}
         onChangeText={onChangeText}
+        keyboardType={keyboardType}
       />
     </View>
   );
@@ -30,17 +32,17 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   label: {
-    fontSize: resWidth(15),
+    fontSize: resWidth(14),
     fontFamily: Fonts.primary[400],
     color: Colors.text.primary,
-    marginBottom: 12,
+    marginBottom: 8,
   },
   textInput: {
     paddingHorizontal: 16,
     borderColor: Colors.border.gray,
     borderWidth: 0.7,
     borderRadius: 10,
-    paddingVertical: resHeight(8),
+    paddingVertical: 16,
     color: Colors.text.primary,
     fontSize: 13,
     letterSpacing: 1,

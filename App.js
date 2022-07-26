@@ -7,13 +7,19 @@ import SplashScreen from 'react-native-splash-screen';
 const App = () => {
   useEffect(() => {
     SplashScreen.hide();
-  }, []);
+  });
+
+  const isLightTheme = useColorScheme() == 'black';
   return (
-    <View style={{flex: 1}}>
+    <>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor={isLightTheme ? 'black' : 'white'}
+      />
       <NavigationContainer>
         <Router />
       </NavigationContainer>
-    </View>
+    </>
   );
 };
 

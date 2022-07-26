@@ -16,16 +16,51 @@ import {
   SelectPicker,
 } from '../../Components/Atoms';
 import {Colors, resHeight, resWidth, Fonts} from './../../Utils';
-import SelectDropdown from 'react-native-select-dropdown';
 
-const ListCities = ['Yogyakarta', 'Solo', 'Semarang', 'Magelang'];
+const baseUrl = 'https://dev.farizdotid.com/api/daerahindonesia';
 
 const RegisterAddress = ({navigation}) => {
-  const [phoneNumber, setPhoneNumber] = useState();
-  const [provinsi, setProvinsi] = useState('');
-  const [kota, setKota] = useState('');
-  const [kecamatan, setKecamatan] = useState('');
-  const [address, setAddress] = useState('');
+  const [listProvinsi, setListProvinsi] = useState([]);
+
+  const [data, setData] = useState({
+    phoneNumber: '',
+    provinsi: '',
+    kota: '',
+    kecamatan: '',
+    address: '',
+  });
+  const onChangePhoneNumber = value => {
+    setData({...data, phoneNumber: value});
+  };
+
+  const onChangeKota = value => {
+    setData({...data, kota: value});
+  };
+
+  const onChangeKecamatan = value => {
+    setData({...data, kota: value});
+  };
+  const onChangeAddress = value => {
+    setData({...data, address: value});
+  };
+
+  const getDataProvince = async () => {
+    try {
+      const response = await fetch(`${baseUrl}/provinsi`);
+      const json = await response.json();
+      setListProvinsi(json.provinsi);
+    } catch (error) {
+      console.warn(error);
+    }
+  };
+
+  useEffect(() => {
+    getDataProvince();
+  }, []);
+
+  const handleRegister = () => {
+    navigation.navigate('Menu');
+  };
 
   return (
     <View style={styles.container}>
@@ -35,42 +70,59 @@ const RegisterAddress = ({navigation}) => {
         subtitle="Make sure it’s valid"
         onBack={() => navigation.navigate('Register')}
       />
-      <ScrollView style={styles.content}>
+      <ScrollView style={styles.content} showsHorizontalScrollIndicator={false}>
         <TextInputCustom
           label="Nomor WhatsApp:"
           placeholder="masukkan nomor w.a aktif"
-          value={phoneNumber}
-          onChangeText={value => setPhoneNumber(value)}
+          value={data.phoneNumber}
+          onChangeText={onChangePhoneNumber}
+          keyboardType={'phone-pad'}
         />
-        <TextInputCustom
-          label="Provinsi:"
-          placeholder="masukkan domisili anda"
-          value={provinsi}
-          onChangeText={value => setProvinsi(value)}
+        {/* List PROVINSI */}
+        <SelectPicker
+          title={'Pilih provinsi:'}
+          data={listProvinsi}
+          searchPlaceHolder="Cari provinsi"
+          onSelect={(selectedItem, index) => {
+            setData({...data, provinsi: selectedItem.nama});
+          }}
+          renderCustomizedButtonChild={(selectedItem, index) => {
+            return (
+              <View style={styles.wrapCustomButton}>
+                <Text style={styles.labelCustomButton}>
+                  {selectedItem ? selectedItem.nama : 'cari'}
+                </Text>
+              </View>
+            );
+          }}
+          renderCustomizedRowChild={(item, index) => {
+            return (
+              <View style={styles.stylingBarisdropdown} key={index}>
+                <Text style={styles.textdropdown}>{item.nama}</Text>
+              </View>
+            );
+          }}
         />
         <TextInputCustom
           label="Kota:"
           placeholder="dimana kota anda"
-          value={kota}
-          onChangeText={value => setKota(value)}
+          value={data.kota}
+          onChangeText={onChangeKota}
         />
         <TextInputCustom
           label="Kecamatan:"
-          placeholder="masukkan nama kecamatan"
-          value={kecamatan}
-          onChangeText={value => setKecamatan(value)}
+          placeholder="dimana kecamatan anda"
+          value={data.kecamatan}
+          onChangeText={onChangeKecamatan}
         />
         <TextInputCustom
           label="Alamat lengkap:"
           placeholder="input your address"
-          value={address}
-          onChangeText={value => setAddress(value)}
+          value={data.address}
+          onChangeText={onChangeAddress}
         />
         <Gap height={20} />
-        <ButtonCustom
-          text={'Register Now'}
-          onPress={() => navigation.navigate('RegisterSuccess')}
-        />
+        <ButtonCustom text={'Register'} onPress={handleRegister} />
       </ScrollView>
     </View>
   );
@@ -91,5 +143,35 @@ const styles = StyleSheet.create({
     paddingVertical: resHeight(20),
     backgroundColor: 'white',
     borderRadius: 12,
+  },
+  wrapCustomButton: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    paddingHorizontal: 18,
+    backgroundColor: 'white',
+  },
+  labelCustomButton: {
+    color: 'black',
+    textAlign: 'center',
+    fontWeight: '400',
+    fontSize: 16,
+    opacity: 0.6,
+  },
+  stylingBarisdropdown: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    paddingHorizontal: 18,
+    borderRadius: 10,
+  },
+  textdropdown: {
+    color: 'black',
+    textAlign: 'center',
+    fontWeight: '400',
+    fontSize: 14,
+    marginHorizontal: 12,
   },
 });

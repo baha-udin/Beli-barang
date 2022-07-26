@@ -6,7 +6,7 @@ import {ImageSplash} from './../../Assets';
 const Splash = ({navigation}) => {
   setTimeout(() => {
     navigation.replace('Login');
-  }, 1000);
+  }, 500);
 
   return (
     <View style={styles.container}>
