@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
   },
   star: {
     flexDirection: 'row',
-    paddingLeft: 8,
   },
   valueRating: {
     fontSize: 12,

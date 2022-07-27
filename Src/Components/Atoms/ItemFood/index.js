@@ -3,7 +3,7 @@ import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import Rating from '../Rating';
 import {Colors, Fonts} from '../../../Utils';
 
-const ItemListFood = ({onPress, image}) => {
+const ItemFood = ({onPress, image}) => {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <View style={styles.container}>
@@ -24,7 +24,7 @@ const ItemListFood = ({onPress, image}) => {
   );
 };
 
-export default ItemListFood;
+export default ItemFood;
 
 const styles = StyleSheet.create({
   container: {

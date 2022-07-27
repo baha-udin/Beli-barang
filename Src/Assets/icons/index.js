@@ -9,6 +9,8 @@ import IconProfile from './ProfileOn.svg';
 import IconProfileInActive from './ProfileOff.svg';
 import StarOn from './StarOn.svg';
 import StarOff from './StarOff.svg';
+import IconMinus from './btnMinus.svg';
+import IconPlus from './btnPlus.svg';
 
 export {
   IconBack,
@@ -22,4 +24,6 @@ export {
   StarOff,
   StarOn,
   IconBackWhite,
+  IconMinus,
+  IconPlus,
 };

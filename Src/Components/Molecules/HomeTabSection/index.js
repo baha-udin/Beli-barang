@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import {resHeight, resWidth, Colors, Fonts} from './../../../Utils';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-import {ItemListFood} from '../../Atoms';
+import {ItemFood} from '../../Atoms';
 import {
   FoodDummy6,
   FoodDummy7,
@@ -38,27 +38,27 @@ const NewTaste = () => {
   const navigation = useNavigation();
   return (
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-      <ItemListFood
+      <ItemFood
         image={FoodDummy7}
         onPress={() => navigation.navigate('FoodDetail')}
       />
-      <ItemListFood
+      <ItemFood
         image={FoodDummy6}
         onPress={() => navigation.navigate('FoodDetail')}
       />
-      <ItemListFood
+      <ItemFood
         image={FoodDummy8}
         onPress={() => navigation.navigate('FoodDetail')}
       />
-      <ItemListFood
+      <ItemFood
         image={FoodDummy9}
         onPress={() => navigation.navigate('FoodDetail')}
       />
-      <ItemListFood
+      <ItemFood
         image={FoodDummy10}
         onPress={() => navigation.navigate('FoodDetail')}
       />
-      <ItemListFood
+      <ItemFood
         image={FoodDummy11}
         onPress={() => navigation.navigate('FoodDetail')}
       />
@@ -70,15 +70,15 @@ const Popular = () => {
   const navigation = useNavigation();
   return (
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-      <ItemListFood
+      <ItemFood
         image={FoodDummy9}
         onPress={() => navigation.navigate('FoodDetail')}
       />
-      <ItemListFood
+      <ItemFood
         image={FoodDummy7}
         onPress={() => navigation.navigate('FoodDetail')}
       />
-      <ItemListFood
+      <ItemFood
         image={FoodDummy8}
         onPress={() => navigation.navigate('FoodDetail')}
       />
@@ -90,15 +90,15 @@ const Recommended = () => {
   const navigation = useNavigation();
   return (
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-      <ItemListFood
+      <ItemFood
         image={FoodDummy9}
         onPress={() => navigation.navigate('FoodDetail')}
       />
-      <ItemListFood
+      <ItemFood
         image={FoodDummy13}
         onPress={() => navigation.navigate('FoodDetail')}
       />
-      <ItemListFood
+      <ItemFood
         image={FoodDummy11}
         onPress={() => navigation.navigate('FoodDetail')}
       />
