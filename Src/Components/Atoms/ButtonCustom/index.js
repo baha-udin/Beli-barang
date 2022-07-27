@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
   buttonLogin: color => ({
     backgroundColor: color,
     paddingVertical: resHeight(10),
+    paddingHorizontal: 30,
     borderRadius: 8,
   }),
   buttonRegister: {

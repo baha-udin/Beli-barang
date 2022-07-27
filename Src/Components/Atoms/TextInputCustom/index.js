@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, TextInput} from 'react-native';
+import {StyleSheet, Text, View, TextInput, Platform} from 'react-native';
 import {Fonts, Colors, resWidth, resHeight} from '../../../Utils';
 
 const TextInputCustom = ({
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.border.gray,
     borderWidth: 0.7,
     borderRadius: 10,
-    paddingVertical: 16,
+    paddingVertical: Platform.OS === 'android' ? 8 : 14,
     color: Colors.text.primary,
     fontSize: 13,
     letterSpacing: 1,

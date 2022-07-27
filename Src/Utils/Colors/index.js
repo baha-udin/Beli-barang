@@ -6,6 +6,7 @@ const mainColors = {
   gray2: '#F0F0F0',
   red: '#D9435E',
   whiteBackground: '#FAFAFC',
+  green: '#1ABC9C',
 };
 
 export const Colors = {
@@ -15,6 +16,7 @@ export const Colors = {
     white: mainColors.white,
     active: mainColors.teal,
     inactive: mainColors.gray,
+    green: mainColors.green,
   },
   border: {
     gray: mainColors.gray,

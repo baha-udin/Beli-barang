@@ -26,7 +26,8 @@
     "react-native-svg": "^12.3.0",
     "react-native-svg-transformer": "^1.0.0",
     "react-native-tab-view": "^2.15.2",
-    "react-native-vector-icons": "^9.2.0"
+    "react-native-vector-icons": "^9.2.0",
+    "react-number-format": "^4.9.3"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
