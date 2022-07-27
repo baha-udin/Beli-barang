@@ -38,7 +38,7 @@ const RegisterAddress = ({navigation}) => {
   };
 
   const onChangeKecamatan = value => {
-    setData({...data, kota: value});
+    setData({...data, kecamatan: value});
   };
   const onChangeAddress = value => {
     setData({...data, address: value});
