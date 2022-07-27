@@ -9,6 +9,17 @@ import {
 import {resHeight, resWidth, Colors, Fonts} from './../../../Utils';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {ItemListFood} from '../../Atoms';
+import {
+  FoodDummy6,
+  FoodDummy7,
+  FoodDummy8,
+  FoodDummy9,
+  FoodDummy10,
+  FoodDummy11,
+  FoodDummy12,
+  FoodDummy13,
+} from '../../../Assets';
+import {useNavigation} from '@react-navigation/native';
 
 // Custom styling Tab Bar
 const renderTabBar = props => (
@@ -23,32 +34,74 @@ const renderTabBar = props => (
   />
 );
 
-const NewTaste = ({navigation}) => {
+const NewTaste = () => {
+  const navigation = useNavigation();
   return (
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-      <ItemListFood />
-      <ItemListFood />
-      <ItemListFood />
+      <ItemListFood
+        image={FoodDummy7}
+        onPress={() => navigation.navigate('FoodDetail')}
+      />
+      <ItemListFood
+        image={FoodDummy6}
+        onPress={() => navigation.navigate('FoodDetail')}
+      />
+      <ItemListFood
+        image={FoodDummy8}
+        onPress={() => navigation.navigate('FoodDetail')}
+      />
+      <ItemListFood
+        image={FoodDummy9}
+        onPress={() => navigation.navigate('FoodDetail')}
+      />
+      <ItemListFood
+        image={FoodDummy10}
+        onPress={() => navigation.navigate('FoodDetail')}
+      />
+      <ItemListFood
+        image={FoodDummy11}
+        onPress={() => navigation.navigate('FoodDetail')}
+      />
     </View>
   );
 };
 
-const Popular = ({navigation}) => {
+const Popular = () => {
+  const navigation = useNavigation();
   return (
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-      <ItemListFood />
-      <ItemListFood />
-      <ItemListFood />
+      <ItemListFood
+        image={FoodDummy9}
+        onPress={() => navigation.navigate('FoodDetail')}
+      />
+      <ItemListFood
+        image={FoodDummy7}
+        onPress={() => navigation.navigate('FoodDetail')}
+      />
+      <ItemListFood
+        image={FoodDummy8}
+        onPress={() => navigation.navigate('FoodDetail')}
+      />
     </View>
   );
 };
 
-const Recommended = ({navigation}) => {
+const Recommended = () => {
+  const navigation = useNavigation();
   return (
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-      <ItemListFood />
-      <ItemListFood />
-      <ItemListFood />
+      <ItemListFood
+        image={FoodDummy9}
+        onPress={() => navigation.navigate('FoodDetail')}
+      />
+      <ItemListFood
+        image={FoodDummy13}
+        onPress={() => navigation.navigate('FoodDetail')}
+      />
+      <ItemListFood
+        image={FoodDummy11}
+        onPress={() => navigation.navigate('FoodDetail')}
+      />
     </View>
   );
 };

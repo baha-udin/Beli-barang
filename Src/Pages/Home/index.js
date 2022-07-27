@@ -21,33 +21,33 @@ import {Gap, HeaderProfile, ItemListFood} from './../../Components/Atoms';
 
 const Home = () => {
   return (
-    <ScrollView style={styles.container}>
-      <StatusBar barStyle="dark-content" />
+    <View style={styles.container}>
       <HeaderProfile
         greeting={'Good Evening'}
         name={'Clau'}
         imgProfile={DummyProfile1}
       />
-      <Gap height={8} />
-      {/* Section Card Food 1 */}
-      <View style={styles.wrapCardFood}>
-        <Text style={styles.label}>Let's get some of foods</Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <Gap width={20} />
-          <FoodCard image={FoodDummy1} title="Cherry Healthy" />
-          <FoodCard image={FoodDummy2} title="Big Avocado" />
-          <FoodCard image={FoodDummy3} title="Sandwich parsley" />
-          <FoodCard image={FoodDummy4} title="Cappucino" />
-          <FoodCard image={FoodDummy5} title="Sandwich parsley" />
-          <Gap width={10} />
-        </ScrollView>
-      </View>
+      <ScrollView>
+        {/* Section Card Food 1 */}
+        <View style={styles.wrapCardFood}>
+          <Text style={styles.label}>Let's get some of foods</Text>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <Gap width={20} />
+            <FoodCard image={FoodDummy1} title="Cherry Healthy" />
+            <FoodCard image={FoodDummy2} title="Big Avocado" />
+            <FoodCard image={FoodDummy3} title="Sandwich parsley" />
+            <FoodCard image={FoodDummy4} title="Cappucino" />
+            <FoodCard image={FoodDummy5} title="Sandwich parsley" />
+            <Gap width={10} />
+          </ScrollView>
+        </View>
 
-      {/* Section Tab View with list menu */}
-      <View style={styles.wrapTabBar}>
-        <HomeTabSection />
-      </View>
-    </ScrollView>
+        {/* Section Tab View with list menu */}
+        <View style={styles.wrapTabBar}>
+          <HomeTabSection />
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 

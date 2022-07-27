@@ -1,16 +1,15 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import Rating from '../Rating';
-import {FoodDummy6} from '../../../Assets';
 import {Colors, Fonts} from '../../../Utils';
 
-const ItemListFood = ({onPress}) => {
+const ItemListFood = ({onPress, image}) => {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <View style={styles.container}>
         <View style={styles.wrapLeft}>
           <View style={styles.wrapImage}>
-            <Image source={FoodDummy6} style={styles.image} />
+            <Image source={image} style={styles.image} />
           </View>
           <View style={styles.wrapText}>
             <Text style={styles.title}>Zuppa Soup</Text>
@@ -19,7 +18,6 @@ const ItemListFood = ({onPress}) => {
         </View>
         <View style={styles.wrapRating}>
           <Rating />
-          <Text>4.5</Text>
         </View>
       </View>
     </TouchableOpacity>

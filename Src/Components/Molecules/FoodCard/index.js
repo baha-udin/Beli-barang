@@ -11,7 +11,6 @@ const FoodCard = ({image, title, onPress}) => {
       <Text style={styles.title}>{title}</Text>
       <View style={styles.wrapRating}>
         <Rating />
-        <Text style={styles.valueRating}>4.5</Text>
       </View>
     </TouchableOpacity>
   );
@@ -52,11 +51,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingTop: 8,
     paddingBottom: 16,
-  },
-  valueRating: {
-    fontSize: 12,
-    fontFamily: Fonts.primary[400],
-    color: Colors.text.secondary,
-    marginLeft: 4,
   },
 });

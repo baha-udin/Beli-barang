@@ -12,7 +12,6 @@ import {Colors, Fonts, resWidth} from '../../../Utils';
 const HeaderProfile = ({imgProfile, greeting, name}) => {
   return (
     <View style={styles.wrapHeader}>
-      <StatusBar barStyle={'light-content'} />
       <View style={styles.sectionLeft}>
         <Text style={styles.greeting}>{greeting}</Text>
         <Text style={styles.name}>{name}</Text>

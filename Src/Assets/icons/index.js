@@ -1,4 +1,5 @@
 import IconBack from './iconBack.svg';
+import IconBackWhite from './icBack.svg';
 import IconArrowDown from './ArrowDownBlack.svg';
 import IconHome from './HomeOn.svg';
 import IconHomeInActive from './HomeOff.svg';
@@ -20,4 +21,5 @@ export {
   IconProfileInActive,
   StarOff,
   StarOn,
+  IconBackWhite,
 };
