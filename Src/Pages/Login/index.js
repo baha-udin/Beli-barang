@@ -15,33 +15,69 @@ import {
   TextInputCustom,
 } from '../../Components/Atoms';
 import {Colors, resHeight, resWidth, Fonts} from './../../Utils';
+import {showMessage, hideMessage} from 'react-native-flash-message';
+import {signInWithEmailAndPassword} from 'firebase/auth';
+import {Authentication} from '../../../Firebase';
 
 const Login = ({navigation}) => {
+  const [textLogin, setTextLogin] = useState('Login');
   const [user, setUser] = useState({
     email: '',
     password: '',
   });
-
   const onChangeEmail = value => {
     setUser({...user, email: value});
   };
-
   const onChangePassword = value => {
     setUser({...user, password: value});
   };
-
   const handleLogin = () => {
-    try {
-      if (!user.email) {
-        Alert.alert('Email masih kosong nih, yuk diisi dulu');
-      } else if (!user.password || user.password.length <= 6) {
-        Alert.alert('Pastikan password sudah terisi & minimal 6 karakter ya..');
-      } else {
-        navigation.navigate('Register');
-        console.log('Login berhasil ya');
-      }
-    } catch (error) {
-      console.log(error);
+    setTextLogin('Sedang memproses...');
+    if (!user.email || user.email.length <= 8) {
+      showMessage({
+        message: 'Email masih kosong / tidak valid nih.., isi yang benar ya',
+        type: 'danger',
+      });
+      setTextLogin('Login');
+    } else if (!user.password || user.password.length <= 6) {
+      showMessage({
+        message: 'Gunakan password minimal 6 karakter ya...',
+        type: 'danger',
+      });
+      setTextLogin('Login');
+    } else {
+      signInWithEmailAndPassword(Authentication, user.email, user.password)
+        .then(response => {
+          // Signed in
+          const user = response.user;
+          console.log(user);
+          showMessage({
+            message: 'Login berhasil',
+            type: 'success',
+          });
+          navigation.navigate('Menu');
+          setTextLogin('Login');
+        })
+        .catch(error => {
+          const errorCode = error.code;
+          console.log(errorCode);
+          if (
+            errorCode === 'auth/invalid-email' ||
+            errorCode === 'auth/user-not-found'
+          ) {
+            showMessage({
+              message: 'Email kamu belum terdaftar nih, yuk daftar dulu',
+              type: 'danger',
+            });
+          }
+          if (errorCode === 'auth/wrong-password') {
+            showMessage({
+              message: 'Password salah nih, gunakan password yang benar ya',
+              type: 'danger',
+            });
+          }
+          setTextLogin('Login');
+        });
     }
   };
 
@@ -65,9 +101,9 @@ const Login = ({navigation}) => {
           value={user.password}
           onChangeText={onChangePassword}
         />
-        <Gap height={20} />
-        <ButtonCustom text={'Login'} onPress={handleLogin} />
         <Gap height={10} />
+        <ButtonCustom text={textLogin} onPress={handleLogin} />
+        <Gap height={20} />
         <ButtonCustom
           text={'Create new Account'}
           onPress={() => navigation.navigate('Register')}
