@@ -14,8 +14,12 @@ import {
   Gap,
 } from '../../Components/Atoms';
 import {Colors, resHeight, resWidth, Fonts} from './../../Utils';
+import {showMessage, hideMessage} from 'react-native-flash-message';
+import {createUserWithEmailAndPassword} from 'firebase/auth';
+import {Authentication} from '../../../Firebase';
 
 const Register = ({navigation}) => {
+  const [label, setLabel] = useState('Continue');
   const [user, setUser] = useState({
     fullName: '',
     email: '',
@@ -27,7 +31,6 @@ const Register = ({navigation}) => {
   };
 
   const onChangeEmail = value => {
-    mbaha;
     setUser({...user, email: value});
   };
 
@@ -35,12 +38,66 @@ const Register = ({navigation}) => {
     setUser({...user, password: value});
   };
 
-  const handleRegister = () => {
-    try {
-      navigation.navigate('RegisterAddress');
-      console.log('Login berhasil ya');
-    } catch (error) {
-      console.log(error);
+  const validateRegister = () => {
+    setLabel('Sedang memproses...');
+    if (!user.fullName) {
+      showMessage({
+        message: 'Ups nama lengkap masih kosong nih, Yuk diisi dulu ya',
+        type: 'danger',
+      });
+      setLabel('Continue');
+    } else if (!user.email) {
+      showMessage({
+        message: 'Email masih kosong nih, yuk diisi dulu ya',
+        type: 'danger',
+      });
+      setLabel('Continue');
+    } else if (!user.password) {
+      showMessage({
+        message: 'Password kosong nih, yuk di isi dulu passwordnya',
+        type: 'danger',
+      });
+      setLabel('Continue');
+    } else {
+      createUserWithEmailAndPassword(Authentication, user.email, user.password)
+        .then(userCredential => {
+          // Signed in
+          const user = userCredential.user;
+          // ...
+          showMessage({
+            message: 'Register berhasil',
+            type: 'success',
+          });
+          navigation.replace('RegisterAddress');
+          setLabel('Continue');
+        })
+        .catch(error => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode);
+
+          if (errorCode === 'auth/email-already-exists') {
+            showMessage({
+              message: 'Email kamu sudah terdaftar nih, yuk langsung Login',
+              type: 'danger',
+            });
+          }
+          if (errorCode === 'auth/invalid-email') {
+            showMessage({
+              message: 'email tidak valid, yuk gunakan email yang valid',
+              type: 'danger',
+            });
+          }
+          if (errorCode === 'auth/weak-password') {
+            showMessage({
+              message: 'Pastikan password lebih dari 6 karakter ya..',
+              type: 'danger',
+            });
+          }
+
+          //pastikan password lebih dari 6 karakter ya..
+          setLabel('Continue');
+        });
     }
   };
 
@@ -81,7 +138,7 @@ const Register = ({navigation}) => {
           onChangeText={onChangePassword}
         />
         <Gap height={20} />
-        <ButtonCustom text={'Continue'} onPress={handleRegister} />
+        <ButtonCustom text={label} onPress={validateRegister} />
       </View>
     </View>
   );

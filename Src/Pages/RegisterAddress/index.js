@@ -59,7 +59,26 @@ const RegisterAddress = ({navigation}) => {
   }, []);
 
   const handleRegister = () => {
-    navigation.navigate('Menu');
+    try {
+      if (!data.phoneNumber) {
+        Alert.alert('Nomor hp masih kosong nih, yuk diisi dulu ya..');
+      } else if (!data.provinsi) {
+        Alert.alert('pilih provinsi dulu ya..');
+      } else if (!data.kota) {
+        Alert.alert('Kolom kota masih kosong nih, yuk diisi dulu ya..');
+      } else if (!data.kecamatan) {
+        Alert.alert('Kolom kecamatan masih kosong nih, yuk diisi dulu ya..');
+      } else if (!data.address) {
+        Alert.alert(
+          'Alamat lengkap kamu diisi dulu ya, biar pesanan kamu cepet sampainya...',
+        );
+      } else {
+        navigation.navigate('Menu');
+        console.log('Login berhasil ya');
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

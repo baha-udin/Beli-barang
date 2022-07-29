@@ -19,7 +19,7 @@ import {resHeight, resWidth, Colors, Fonts} from './../../Utils';
 import {FoodCard, HomeTabSection} from '../../Components/Molecules';
 import {Gap, HeaderProfile, ItemListFood} from './../../Components/Atoms';
 
-const Home = () => {
+const Home = ({navigation}) => {
   return (
     <View style={styles.container}>
       <HeaderProfile
@@ -33,11 +33,31 @@ const Home = () => {
           <Text style={styles.label}>Let's get some of foods</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <Gap width={20} />
-            <FoodCard image={FoodDummy1} title="Cherry Healthy" />
-            <FoodCard image={FoodDummy2} title="Big Avocado" />
-            <FoodCard image={FoodDummy3} title="Sandwich parsley" />
-            <FoodCard image={FoodDummy4} title="Cappucino" />
-            <FoodCard image={FoodDummy5} title="Sandwich parsley" />
+            <FoodCard
+              image={FoodDummy1}
+              title="Cherry Healthy"
+              onPress={() => navigation.navigate('FoodDetail')}
+            />
+            <FoodCard
+              image={FoodDummy2}
+              title="Big Avocado"
+              onPress={() => navigation.navigate('FoodDetail')}
+            />
+            <FoodCard
+              image={FoodDummy3}
+              title="Sandwich parsley"
+              onPress={() => navigation.navigate('FoodDetail')}
+            />
+            <FoodCard
+              image={FoodDummy4}
+              title="Cappucino"
+              onPress={() => navigation.navigate('FoodDetail')}
+            />
+            <FoodCard
+              image={FoodDummy5}
+              title="Sandwich parsley"
+              onPress={() => navigation.navigate('FoodDetail')}
+            />
             <Gap width={10} />
           </ScrollView>
         </View>

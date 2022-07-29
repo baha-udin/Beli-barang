@@ -1,16 +1,16 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Colors, resWidth} from '../../../Utils';
+import {Colors, Fonts, resWidth} from '../../../Utils';
 import {Number} from '../../Atoms';
 
-const ItemValue = ({label, value, valueColor = '#020202', type}) => {
+const ItemValue = ({label, value, color = '#020202', type}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
       {type === 'currency' ? (
-        <Number number={value} style={styles.value(valueColor)} />
+        <Number number={value} style={styles.value(color)} />
       ) : (
-        <Text style={styles.value(valueColor)}>{value}</Text>
+        <Text style={styles.value(color)}>{value}</Text>
       )}
     </View>
   );
@@ -19,16 +19,22 @@ const ItemValue = ({label, value, valueColor = '#020202', type}) => {
 export default ItemValue;
 
 const styles = StyleSheet.create({
-  container: {flexDirection: 'row', justifyContent: 'space-between'},
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 3,
+  },
   label: {
-    fontSize: resWidth(14),
-    fontFamily: 'Poppins-Regular',
-    color: '#8D92A3',
+    fontSize: resWidth(13),
+    fontFamily: Fonts.primary[300],
+    color: Colors.text.primary,
+    opacity: 0.9,
   },
   value: color => ({
     fontSize: resWidth(14),
-    fontFamily: 'Poppins-Regular',
-    color: Colors.text.primary,
-    opacity: 0.8,
+    fontFamily: Fonts.primary[400],
+    color: color,
+    opacity: 0.7,
+    letterSpacing: 0.8,
   }),
 });

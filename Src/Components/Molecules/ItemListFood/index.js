@@ -2,19 +2,21 @@ import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import {FoodDummy6} from '../../../Assets';
 import {Colors, Fonts, resWidth} from '../../../Utils';
+import {Rating} from '../../Atoms';
 
-const ItemListFood = () => {
+const ItemListFood = ({image, items, rating}) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Image source={FoodDummy6} style={styles.img} />
+        <Image source={image} style={styles.img} />
         <View>
           <Text style={styles.title}>Cherry Healty</Text>
           <Text style={styles.price}>Rp . 25.000</Text>
         </View>
       </View>
       <View>
-        <Text style={styles.totalItem}>10 Items</Text>
+        {items && <Text style={styles.totalItem}>{items} Items</Text>}
+        {rating && <Rating />}
       </View>
     </View>
   );

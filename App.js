@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, useColorScheme, StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import Router from './Src/Router';
 import SplashScreen from 'react-native-splash-screen';
+import FlashMessage from 'react-native-flash-message';
 
 const App = () => {
   useEffect(() => {
@@ -18,6 +19,7 @@ const App = () => {
       />
       <NavigationContainer>
         <Router />
+        <FlashMessage position="top" animationDuration={400} />
       </NavigationContainer>
     </>
   );
