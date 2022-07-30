@@ -1,13 +1,5 @@
 import React, {useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  StatusBar,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-} from 'react-native';
+import {StyleSheet, Text, View, StatusBar, ScrollView} from 'react-native';
 import {
   ButtonCustom,
   Gap,
@@ -15,40 +7,29 @@ import {
   TextInputCustom,
 } from '../../Components/Atoms';
 import {Colors, resHeight, resWidth, Fonts} from './../../Utils';
-import {showMessage, hideMessage} from 'react-native-flash-message';
+import {showMessage} from 'react-native-flash-message';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {Authentication} from '../../../Firebase';
 
 const Login = ({navigation}) => {
-  const [textLogin, setTextLogin] = useState('Login');
   const [user, setUser] = useState({
     email: '',
     password: '',
   });
-  const onChangeEmail = value => {
-    setUser({...user, email: value});
-  };
-  const onChangePassword = value => {
-    setUser({...user, password: value});
-  };
   const handleLogin = () => {
-    setTextLogin('Sedang memproses...');
     if (!user.email || user.email.length <= 8) {
       showMessage({
         message: 'Email masih kosong / tidak valid nih.., isi yang benar ya',
         type: 'danger',
       });
-      setTextLogin('Login');
     } else if (!user.password || user.password.length <= 6) {
       showMessage({
         message: 'Gunakan password minimal 6 karakter ya...',
         type: 'danger',
       });
-      setTextLogin('Login');
     } else {
       signInWithEmailAndPassword(Authentication, user.email, user.password)
         .then(response => {
-          // Signed in
           const user = response.user;
           console.log(user);
           showMessage({
@@ -56,7 +37,6 @@ const Login = ({navigation}) => {
             type: 'success',
           });
           navigation.navigate('Menu');
-          setTextLogin('Login');
         })
         .catch(error => {
           const errorCode = error.code;
@@ -76,7 +56,6 @@ const Login = ({navigation}) => {
               type: 'danger',
             });
           }
-          setTextLogin('Login');
         });
     }
   };
@@ -85,31 +64,30 @@ const Login = ({navigation}) => {
     <View style={styles.container}>
       <StatusBar barStyle={'dark-content'} />
       <Header title={'Login'} subtitle="Let's Begin" />
-      <View style={styles.content}>
-        {/* section email */}
+      <ScrollView style={styles.content}>
         <TextInputCustom
           label="Email:"
           placeholder={'Input your email here..'}
           value={user.email}
-          onChangeText={onChangeEmail}
+          onChangeText={value => setUser('email', value)}
+          keyboardType="email-address"
         />
-        {/* section password */}
         <TextInputCustom
           label="Password:"
           placeholder={'input password here...'}
           secureTextEntry={true}
           value={user.password}
-          onChangeText={onChangePassword}
+          onChangeText={value => setUser('password', value)}
         />
         <Gap height={10} />
-        <ButtonCustom text={textLogin} onPress={handleLogin} />
+        <ButtonCustom text={'Login'} onPress={handleLogin} />
         <Gap height={20} />
         <ButtonCustom
           text={'Create new Account'}
           onPress={() => navigation.navigate('Register')}
           color={Colors.background.gray}
         />
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -122,7 +100,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background.white,
   },
   content: {
-    flexDirection: 'column',
     marginTop: '10%',
     marginHorizontal: resWidth(20),
     paddingHorizontal: resWidth(12),

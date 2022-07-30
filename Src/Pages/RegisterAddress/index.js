@@ -1,13 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  StatusBar,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import {StyleSheet, Text, View, StatusBar, ScrollView} from 'react-native';
 import {
   Header,
   TextInputCustom,
@@ -29,20 +21,6 @@ const RegisterAddress = ({navigation}) => {
     kecamatan: '',
     address: '',
   });
-  const onChangePhoneNumber = value => {
-    setData({...data, phoneNumber: value});
-  };
-
-  const onChangeKota = value => {
-    setData({...data, kota: value});
-  };
-
-  const onChangeKecamatan = value => {
-    setData({...data, kecamatan: value});
-  };
-  const onChangeAddress = value => {
-    setData({...data, address: value});
-  };
 
   const getDataProvince = async () => {
     try {
@@ -94,7 +72,7 @@ const RegisterAddress = ({navigation}) => {
           label="Nomor WhatsApp:"
           placeholder="masukkan nomor w.a aktif"
           value={data.phoneNumber}
-          onChangeText={onChangePhoneNumber}
+          onChangeText={value => setData('phoneNumber', value)}
           keyboardType={'phone-pad'}
         />
         {/* List PROVINSI */}
@@ -126,19 +104,19 @@ const RegisterAddress = ({navigation}) => {
           label="Kota:"
           placeholder="dimana kota anda"
           value={data.kota}
-          onChangeText={onChangeKota}
+          onChangeText={value => setData('kota', value)}
         />
         <TextInputCustom
           label="Kecamatan:"
           placeholder="dimana kecamatan anda"
           value={data.kecamatan}
-          onChangeText={onChangeKecamatan}
+          onChangeText={value => setData('kecamatan', value)}
         />
         <TextInputCustom
           label="Alamat lengkap:"
           placeholder="input your address"
           value={data.address}
-          onChangeText={onChangeAddress}
+          onChangeText={value => setData('address', value)}
         />
         <Gap height={20} />
         <ButtonCustom text={'Register'} onPress={handleRegister} />

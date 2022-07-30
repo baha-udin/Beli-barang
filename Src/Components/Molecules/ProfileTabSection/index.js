@@ -6,23 +6,11 @@ import {
   useWindowDimensions,
   Dimensions,
 } from 'react-native';
-import {resHeight, resWidth, Colors, Fonts} from './../../../Utils';
+import {Colors, Fonts} from './../../../Utils';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-import {ItemFood, ItemProfile} from '../../Atoms';
-import {
-  FoodDummy6,
-  FoodDummy7,
-  FoodDummy8,
-  FoodDummy9,
-  FoodDummy10,
-  FoodDummy11,
-  FoodDummy12,
-  FoodDummy13,
-} from '../../../Assets';
+import {ItemProfile} from '../../Atoms';
 import {useNavigation} from '@react-navigation/native';
-import Profile from '../../../Pages/Profile';
 
-// Custom styling Tab Bar
 const renderTabBar = props => (
   <TabBar
     {...props}

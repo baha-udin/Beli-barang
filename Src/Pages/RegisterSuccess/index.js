@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import {SuccessIlustration} from './../../Assets/images';
 import {ButtonCustom} from './../../Components/Atoms';
-import {Fonts, resWidth, resHeight, Colors} from '../../Utils';
+import {Fonts, resHeight, Colors} from '../../Utils';
 
 const RegisterSuccess = ({navigation}) => {
   return (

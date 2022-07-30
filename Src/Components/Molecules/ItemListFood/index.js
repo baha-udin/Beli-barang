@@ -1,10 +1,9 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
-import {FoodDummy6} from '../../../Assets';
 import {Colors, Fonts, resWidth} from '../../../Utils';
 import {Rating} from '../../Atoms';
 
-const ItemListFood = ({image, items, rating}) => {
+const ItemListFood = ({image, items, rating, price, label}) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>

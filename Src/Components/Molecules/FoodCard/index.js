@@ -1,6 +1,5 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
-import {FoodDummy1, StarOn, StarOff} from '../../../Assets';
 import {Colors, Fonts, resWidth} from '../../../Utils';
 import {Rating} from '../../Atoms';
 

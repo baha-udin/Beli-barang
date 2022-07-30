@@ -38,18 +38,9 @@ const InProgress = () => {
   const navigation = useNavigation();
   return (
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-      <ItemFood
-        image={FoodDummy9}
-        onPress={() => navigation.navigate('FoodDetail')}
-      />
-      <ItemFood
-        image={FoodDummy7}
-        onPress={() => navigation.navigate('FoodDetail')}
-      />
-      <ItemFood
-        image={FoodDummy8}
-        onPress={() => navigation.navigate('FoodDetail')}
-      />
+      <ItemFood image={FoodDummy9} />
+      <ItemFood image={FoodDummy7} />
+      <ItemFood image={FoodDummy8} />
     </View>
   );
 };
@@ -57,18 +48,9 @@ const PassOrders = () => {
   const navigation = useNavigation();
   return (
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-      <ItemFood
-        image={FoodDummy8}
-        onPress={() => navigation.navigate('FoodDetail')}
-      />
-      <ItemFood
-        image={FoodDummy9}
-        onPress={() => navigation.navigate('FoodDetail')}
-      />
-      <ItemFood
-        image={FoodDummy7}
-        onPress={() => navigation.navigate('FoodDetail')}
-      />
+      <ItemFood image={FoodDummy8} />
+      <ItemFood image={FoodDummy9} />
+      <ItemFood image={FoodDummy7} />
     </View>
   );
 };

@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {IlustOrderEmpty} from './../../../Assets/images';
-import {ButtonCustom, Gap, Header} from '../../Atoms';
-import {Fonts, resWidth, resHeight, Colors} from '../../../Utils';
+import {ButtonCustom, Gap} from '../../Atoms';
+import {Fonts, resHeight, Colors} from '../../../Utils';
 
 const EmptyOrder = () => {
   return (

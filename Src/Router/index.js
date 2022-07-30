@@ -38,7 +38,7 @@ const Menu = () => {
 const Router = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Profile"
+      initialRouteName="Register"
       screenOptions={{headerShown: false}}>
       <Stack.Screen component={Menu} name="Menu" />
       <Stack.Screen component={Splash} name="Splash" />

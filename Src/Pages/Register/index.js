@@ -4,8 +4,8 @@ import {
   Text,
   View,
   StatusBar,
-  TextInput,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import {
   Header,
@@ -14,68 +14,47 @@ import {
   Gap,
 } from '../../Components/Atoms';
 import {Colors, resHeight, resWidth, Fonts} from './../../Utils';
-import {showMessage, hideMessage} from 'react-native-flash-message';
+import {showMessage} from 'react-native-flash-message';
 import {createUserWithEmailAndPassword} from 'firebase/auth';
 import {Authentication} from '../../../Firebase';
 
 const Register = ({navigation}) => {
-  const [label, setLabel] = useState('Continue');
   const [user, setUser] = useState({
     fullName: '',
     email: '',
     password: '',
   });
-
-  const onChangeFullname = value => {
-    setUser({...user, fullName: value});
-  };
-
-  const onChangeEmail = value => {
-    setUser({...user, email: value});
-  };
-
-  const onChangePassword = value => {
-    setUser({...user, password: value});
-  };
-
   const validateRegister = () => {
-    setLabel('Sedang memproses...');
     if (!user.fullName) {
       showMessage({
         message: 'Ups nama lengkap masih kosong nih, Yuk diisi dulu ya',
         type: 'danger',
       });
-      setLabel('Continue');
     } else if (!user.email) {
       showMessage({
         message: 'Email masih kosong nih, yuk diisi dulu ya',
         type: 'danger',
       });
-      setLabel('Continue');
     } else if (!user.password) {
       showMessage({
         message: 'Password kosong nih, yuk di isi dulu passwordnya',
         type: 'danger',
       });
-      setLabel('Continue');
     } else {
       createUserWithEmailAndPassword(Authentication, user.email, user.password)
-        .then(userCredential => {
-          // Signed in
-          const user = userCredential.user;
-          // ...
+        .then(response => {
+          const user = response.user;
+          console.log(user);
           showMessage({
             message: 'Register berhasil',
             type: 'success',
           });
           navigation.replace('RegisterAddress');
-          setLabel('Continue');
         })
         .catch(error => {
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log(errorCode);
-
           if (errorCode === 'auth/email-already-exists') {
             showMessage({
               message: 'Email kamu sudah terdaftar nih, yuk langsung Login',
@@ -94,9 +73,6 @@ const Register = ({navigation}) => {
               type: 'danger',
             });
           }
-
-          //pastikan password lebih dari 6 karakter ya..
-          setLabel('Continue');
         });
     }
   };
@@ -109,8 +85,7 @@ const Register = ({navigation}) => {
         subtitle="Let's Begin"
         onBack={() => navigation.navigate('Login')}
       />
-      <View style={styles.content}>
-        {/* Section upload photo */}
+      <ScrollView contentContainerStyle={styles.content}>
         <TouchableOpacity style={styles.photo}>
           <View style={styles.borderPhoto}>
             <View style={styles.wrapPhoto}>
@@ -122,24 +97,25 @@ const Register = ({navigation}) => {
           label={'Full name:'}
           placeholder={`what's your name`}
           value={user.fullName}
-          onChangeText={onChangeFullname}
+          onChangeText={value => setUser('fullName', value)}
         />
         <TextInputCustom
           label={'Email:'}
           placeholder={`input your email here`}
           value={user.email}
-          onChangeText={onChangeEmail}
+          onChangeText={value => setUser('email', value)}
+          keyboardType={'email-address'}
         />
         <TextInputCustom
           label={'Password:'}
           placeholder={`input your password here...`}
           secureTextEntry={true}
           value={user.password}
-          onChangeText={onChangePassword}
+          onChangeText={value => setUser('password', value)}
         />
         <Gap height={20} />
-        <ButtonCustom text={label} onPress={validateRegister} />
-      </View>
+        <ButtonCustom text={'Continue'} onPress={validateRegister} />
+      </ScrollView>
     </View>
   );
 };
@@ -150,7 +126,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background.white,
   },
   content: {
-    flexDirection: 'column',
     marginTop: '20%',
     marginHorizontal: resWidth(20),
     paddingHorizontal: resWidth(12),

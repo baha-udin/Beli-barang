@@ -1,12 +1,5 @@
 import React, {useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  useWindowDimensions,
-  ScrollView,
-  StatusBar,
-} from 'react-native';
+import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import {
   DummyProfile1,
   FoodDummy1,
@@ -15,9 +8,9 @@ import {
   FoodDummy4,
   FoodDummy5,
 } from './../../Assets';
-import {resHeight, resWidth, Colors, Fonts} from './../../Utils';
+import {resWidth, Colors, Fonts} from './../../Utils';
 import {FoodCard, HomeTabSection} from '../../Components/Molecules';
-import {Gap, HeaderProfile, ItemListFood} from './../../Components/Atoms';
+import {Gap, HeaderProfile} from './../../Components/Atoms';
 
 const Home = ({navigation}) => {
   return (

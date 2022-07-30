@@ -9,7 +9,7 @@ import {
   IconProfileInActive,
 } from '../../../Assets';
 
-import {Fonts, resWidth} from '../../../Utils';
+import {resWidth} from '../../../Utils';
 
 const Icon = ({label, focus}) => {
   switch (label) {

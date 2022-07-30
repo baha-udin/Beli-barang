@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {Fonts, Colors, resWidth, resHeight} from '../../../Utils';
 
 const ButtonCustom = ({text, onPress, color = '#219EBC'}) => {

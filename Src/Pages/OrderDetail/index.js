@@ -8,7 +8,7 @@ import {FoodDummy12} from '../../Assets';
 const OrderDetail = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <StatusBar barStyle={'dark-content'} />
+      <StatusBar barStyle={'light-content'} />
       <Header
         onBack={() => navigation.navigate('FoodDetail')}
         title="Payment"
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    marginTop: '8%',
+    marginTop: '5%',
     backgroundColor: Colors.background.whiteBackground,
   },
   label: {
@@ -89,6 +89,6 @@ const styles = StyleSheet.create({
   },
   footer: {
     paddingHorizontal: 24,
-    paddingBottom: '10%',
+    paddingVertical: '5%',
   },
 });

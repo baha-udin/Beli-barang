@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, Image, StatusBar} from 'react-native';
+import {StyleSheet, View, StatusBar} from 'react-native';
 import {Gap, Header} from '../../Components/Atoms';
 import {
   EmptyOrder,
@@ -12,6 +12,7 @@ const Order = ({navigation}) => {
   const [isEmpty] = useState(false);
   return (
     <View style={styles.container}>
+      <StatusBar barStyle={'dark-content'} />
       {isEmpty ? (
         <EmptyOrder />
       ) : (

@@ -6,7 +6,7 @@ import {
   useWindowDimensions,
   Dimensions,
 } from 'react-native';
-import {resHeight, resWidth, Colors, Fonts} from './../../../Utils';
+import {Colors, Fonts} from './../../../Utils';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {ItemFood} from '../../Atoms';
 import {
@@ -16,7 +16,6 @@ import {
   FoodDummy9,
   FoodDummy10,
   FoodDummy11,
-  FoodDummy12,
   FoodDummy13,
 } from '../../../Assets';
 import {useNavigation} from '@react-navigation/native';

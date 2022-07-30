@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View, Image, StatusBar} from 'react-native';
 import {OrderIlustration} from './../../Assets/images';
 import {ButtonCustom, Gap} from './../../Components/Atoms';
-import {Fonts, resWidth, resHeight, Colors} from '../../Utils';
+import {Fonts, resHeight, Colors} from '../../Utils';
 
 const OrderSuccess = ({navigation}) => {
   return (

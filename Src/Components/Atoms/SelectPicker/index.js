@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, ScrollView, Button} from 'react-native';
-import {Colors, resHeight, Fonts, resWidth} from '../../../Utils';
+import {Colors, Fonts, resWidth} from '../../../Utils';
 import {IconArrowDown} from '../../../Assets/icons';
 import SelectDropdown from 'react-native-select-dropdown';
 
@@ -27,6 +27,8 @@ const SelectPicker = ({
           renderCustomizedButtonChild={renderCustomizedButtonChild}
           // custom list dropdown
           renderCustomizedRowChild={renderCustomizedRowChild}
+          renderDropdownIcon={IconArrowDown}
+          dropdownIconPosition={'right'}
           dropdownStyle={styles.wrapDropDown}
           rowStyle={styles.LineDropdown}
           selectedRowStyle={styles.dropdownWhenSelected}

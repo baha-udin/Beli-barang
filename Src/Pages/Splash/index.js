@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Colors, Fonts, resHeight, resWidth} from './../../Utils';
+import {Colors, Fonts, resWidth} from './../../Utils';
 import {ImageSplash} from './../../Assets';
 
 const Splash = ({navigation}) => {

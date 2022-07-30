@@ -16,7 +16,6 @@ const Profile = () => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle={'dark-content'} />
-      {/* Section HEADER */}
       <View style={styles.wrapHeader}>
         <View style={styles.borderPhoto}>
           <TouchableOpacity>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import Rating from '../Rating';
-import {Colors, Fonts} from '../../../Utils';
+import {Fonts} from '../../../Utils';
 
 const ItemFood = ({onPress, image}) => {
   return (

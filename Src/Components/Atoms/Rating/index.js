@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {StarOn, StarOff} from '../../../Assets';
-import {Fonts, Colors} from '../../../Utils';
+import {Fonts} from '../../../Utils';
 
 const Rating = () => {
   return (
