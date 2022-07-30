@@ -11,6 +11,7 @@ import StarOn from './StarOn.svg';
 import StarOff from './StarOff.svg';
 import IconMinus from './btnMinus.svg';
 import IconPlus from './btnPlus.svg';
+import IconArrowRight from './ArrowRight.svg';
 
 export {
   IconBack,
@@ -26,4 +27,5 @@ export {
   IconBackWhite,
   IconMinus,
   IconPlus,
+  IconArrowRight,
 };

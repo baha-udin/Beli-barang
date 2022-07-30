@@ -8,6 +8,7 @@ import Rating from './Rating';
 import ItemFood from './ItemFood';
 import Counter from './Counter';
 import Number from './Number';
+import ItemProfile from './ItemProfile';
 
 export {
   Header,
@@ -20,4 +21,5 @@ export {
   ItemFood,
   Counter,
   Number,
+  ItemProfile,
 };
