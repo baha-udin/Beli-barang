@@ -6,11 +6,10 @@ import {Fonts, resWidth, resHeight, Colors} from '../../Utils';
 
 const Order = ({navigation}) => {
   return (
-    <>
+    <View>
       <Header title={'Your Orders'} subtitle={'Wait for the best meal'} />
       <View style={styles.container}>
         <StatusBar barStyle={'dark-content'} />
-
         <Image source={IlustOrderEmpty} style={styles.image} />
         <View style={styles.wrapText}>
           <Text style={styles.title}>Ouch! Hungry</Text>
@@ -24,7 +23,7 @@ const Order = ({navigation}) => {
           />
         </View>
       </View>
-    </>
+    </View>
   );
 };
 
