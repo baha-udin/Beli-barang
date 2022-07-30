@@ -73,7 +73,7 @@ const RegisterAddress = ({navigation}) => {
           'Alamat lengkap kamu diisi dulu ya, biar pesanan kamu cepet sampainya...',
         );
       } else {
-        navigation.navigate('Menu');
+        navigation.navigate('RegisterSuccess');
         console.log('Login berhasil ya');
       }
     } catch (error) {
