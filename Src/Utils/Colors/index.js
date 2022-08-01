@@ -17,6 +17,7 @@ export const Colors = {
     active: mainColors.teal,
     inactive: mainColors.gray,
     green: mainColors.green,
+    red: mainColors.red,
   },
   border: {
     gray: mainColors.gray,

@@ -56,7 +56,7 @@ const FoodDetail = ({navigation}) => {
           </View>
           <ButtonCustom
             text={'Order now'}
-            onPress={() => navigation.navigate('OrderDetail')}
+            onPress={() => navigation.navigate('OrderSummary')}
           />
         </View>
       </View>
