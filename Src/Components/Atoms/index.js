@@ -5,7 +5,6 @@ import Gap from './Gap';
 import SelectPicker from './SelectPicker';
 import HeaderProfile from './HeaderProfile';
 import Rating from './Rating';
-import ItemFood from './ItemFood';
 import Counter from './Counter';
 import Number from './Number';
 import ItemProfile from './ItemProfile';
@@ -18,7 +17,6 @@ export {
   SelectPicker,
   HeaderProfile,
   Rating,
-  ItemFood,
   Counter,
   Number,
   ItemProfile,

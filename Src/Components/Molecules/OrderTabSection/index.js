@@ -9,6 +9,7 @@ import {
 import {resHeight, resWidth, Colors, Fonts} from '../../../Utils';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {ItemFood, ItemProfile} from '../../Atoms';
+import ItemListFood from '../ItemListFood';
 import {
   FoodDummy6,
   FoodDummy7,
@@ -38,9 +39,20 @@ const InProgress = () => {
   const navigation = useNavigation();
   return (
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-      <ItemFood image={FoodDummy9} />
-      <ItemFood image={FoodDummy7} />
-      <ItemFood image={FoodDummy8} />
+      <ItemListFood
+        type="in-progress"
+        label={'Vietnam Soup'}
+        items={5}
+        price="250.000"
+        image={FoodDummy9}
+      />
+      <ItemListFood
+        type="in-progress"
+        label={'Vegan Avocado'}
+        items={1}
+        price="20.000"
+        image={FoodDummy10}
+      />
     </View>
   );
 };
@@ -48,9 +60,15 @@ const PassOrders = () => {
   const navigation = useNavigation();
   return (
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-      <ItemFood image={FoodDummy8} />
-      <ItemFood image={FoodDummy9} />
-      <ItemFood image={FoodDummy7} />
+      <ItemListFood
+        type="past-orders"
+        label={'Roti owen'}
+        image={FoodDummy7}
+        items={5}
+        price="250.000"
+        date="31 Juli 2022"
+        status={'Canceled'}
+      />
     </View>
   );
 };

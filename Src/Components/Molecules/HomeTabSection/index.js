@@ -9,6 +9,7 @@ import {
 import {Colors, Fonts} from './../../../Utils';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {ItemFood} from '../../Atoms';
+import ItemListFood from './../ItemListFood';
 import {
   FoodDummy6,
   FoodDummy7,
@@ -37,29 +38,29 @@ const NewTaste = () => {
   const navigation = useNavigation();
   return (
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-      <ItemFood
+      <ItemListFood
+        type="product"
+        label={'Roti owen'}
+        price="25000"
         image={FoodDummy7}
         onPress={() => navigation.navigate('FoodDetail')}
+        rating
       />
-      <ItemFood
-        image={FoodDummy6}
-        onPress={() => navigation.navigate('FoodDetail')}
-      />
-      <ItemFood
+      <ItemListFood
+        type="product"
+        label={'Parsley'}
+        price="45000"
         image={FoodDummy8}
         onPress={() => navigation.navigate('FoodDetail')}
+        rating
       />
-      <ItemFood
-        image={FoodDummy9}
+      <ItemListFood
+        type="product"
+        label={'Soup Sapi'}
+        price="30000"
+        image={FoodDummy6}
         onPress={() => navigation.navigate('FoodDetail')}
-      />
-      <ItemFood
-        image={FoodDummy10}
-        onPress={() => navigation.navigate('FoodDetail')}
-      />
-      <ItemFood
-        image={FoodDummy11}
-        onPress={() => navigation.navigate('FoodDetail')}
+        rating
       />
     </View>
   );
@@ -69,17 +70,29 @@ const Popular = () => {
   const navigation = useNavigation();
   return (
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-      <ItemFood
-        image={FoodDummy9}
-        onPress={() => navigation.navigate('FoodDetail')}
-      />
-      <ItemFood
-        image={FoodDummy7}
-        onPress={() => navigation.navigate('FoodDetail')}
-      />
-      <ItemFood
+      <ItemListFood
+        type="product"
+        label={'Parsley'}
+        price="45000"
         image={FoodDummy8}
         onPress={() => navigation.navigate('FoodDetail')}
+        rating
+      />
+      <ItemListFood
+        type="product"
+        label={'Roti owen'}
+        price="25000"
+        image={FoodDummy7}
+        onPress={() => navigation.navigate('FoodDetail')}
+        rating
+      />
+      <ItemListFood
+        type="product"
+        label={'Soup Sapi'}
+        price="30000"
+        image={FoodDummy6}
+        onPress={() => navigation.navigate('FoodDetail')}
+        rating
       />
     </View>
   );
@@ -89,17 +102,29 @@ const Recommended = () => {
   const navigation = useNavigation();
   return (
     <View style={{paddingTop: 8, paddingHorizontal: 24}}>
-      <ItemFood
-        image={FoodDummy9}
+      <ItemListFood
+        type="product"
+        label={'Roti owen'}
+        price="25000"
+        image={FoodDummy7}
         onPress={() => navigation.navigate('FoodDetail')}
+        rating
       />
-      <ItemFood
-        image={FoodDummy13}
+      <ItemListFood
+        type="product"
+        label={'Parsley'}
+        price="45000"
+        image={FoodDummy8}
         onPress={() => navigation.navigate('FoodDetail')}
+        rating
       />
-      <ItemFood
-        image={FoodDummy11}
+      <ItemListFood
+        type="product"
+        label={'Soup Sapi'}
+        price="30000"
+        image={FoodDummy6}
         onPress={() => navigation.navigate('FoodDetail')}
+        rating
       />
     </View>
   );
