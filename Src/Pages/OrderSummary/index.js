@@ -1,11 +1,11 @@
 import React from 'react';
 import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import {ButtonCustom, Gap, Header} from '../../Components/Atoms';
-import {ItemListFood, ItemValue} from './../../Components/Molecules';
+import {ItemListFood, ItemValue} from '../../Components/Molecules';
 import {Colors, Fonts, resWidth} from '../../Utils';
 import {FoodDummy12} from '../../Assets';
 
-const OrderDetail = ({navigation}) => {
+const OrderSummary = ({navigation}) => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle={'dark-content'} />
@@ -60,7 +60,7 @@ const OrderDetail = ({navigation}) => {
   );
 };
 
-export default OrderDetail;
+export default OrderSummary;
 
 const styles = StyleSheet.create({
   container: {
