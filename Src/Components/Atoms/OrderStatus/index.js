@@ -9,7 +9,7 @@ const OrderStatus = ({orderCode, status}) => {
         <Text style={styles.titleOrder}>Order Status</Text>
         <Text style={styles.kodeOrder}>{orderCode}</Text>
       </View>
-      {status === 'Paid' ? (
+      {status === 'paid' ? (
         <Text style={styles.statusOrderSucces}>{status}</Text>
       ) : (
         <Text style={styles.statusOrderCancel}>{status}</Text>
