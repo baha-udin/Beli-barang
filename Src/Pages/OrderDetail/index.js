@@ -52,13 +52,13 @@ const OrderDetail = ({navigation}) => {
           <ItemValue label="City" value={'Semarang'} />
         </View>
         <Gap height={20} />
-        <OrderStatus status={'Cancel'} orderCode={'#FM209391'} />
+        <OrderStatus status={'paid'} orderCode={'#FM209391'} />
       </ScrollView>
       <View style={styles.footer}>
         <Gap height={16} />
         <ButtonCustom
           text="Cancel my order"
-          onPress={console.log('Order sudah di cancel')}
+          onPress={() => navigation.navigate('Menu', {screen: 'Order'})}
           color={Colors.background.red}
         />
       </View>
