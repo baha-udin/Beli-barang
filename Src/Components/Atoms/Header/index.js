@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingLeft: 20,
     paddingTop: Platform.OS == 'ios' ? 50 : 20,
-    paddingBottom: 16,
+    paddingBottom: 10,
     flexDirection: 'row',
     alignItems: 'center',
   },
