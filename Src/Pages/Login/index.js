@@ -12,23 +12,21 @@ import {signInWithEmailAndPassword} from 'firebase/auth';
 import {Authentication} from '../../../Firebase';
 
 const Login = ({navigation}) => {
-  const [user, setUser] = useState({
-    email: '',
-    password: '',
-  });
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const handleLogin = () => {
-    if (!user.email || user.email.length <= 8) {
+    if (!email || email.length <= 8) {
       showMessage({
         message: 'Email masih kosong / tidak valid nih.., isi yang benar ya',
         type: 'danger',
       });
-    } else if (!user.password || user.password.length <= 6) {
+    } else if (!password || password.length <= 6) {
       showMessage({
         message: 'Gunakan password minimal 6 karakter ya...',
         type: 'danger',
       });
     } else {
-      signInWithEmailAndPassword(Authentication, user.email, user.password)
+      signInWithEmailAndPassword(Authentication, email, password)
         .then(response => {
           const user = response.user;
           console.log(user);
@@ -68,16 +66,16 @@ const Login = ({navigation}) => {
         <TextInputCustom
           label="Email:"
           placeholder={'Input your email here..'}
-          value={user.email}
-          onChangeText={value => setUser('email', value)}
+          value={email}
+          onChangeText={value => setEmail(value)}
           keyboardType="email-address"
         />
         <TextInputCustom
           label="Password:"
           placeholder={'input password here...'}
           secureTextEntry={true}
-          value={user.password}
-          onChangeText={value => setUser('password', value)}
+          value={password}
+          onChangeText={value => setPassword(value)}
         />
         <Gap height={10} />
         <ButtonCustom text={'Login'} onPress={handleLogin} />
