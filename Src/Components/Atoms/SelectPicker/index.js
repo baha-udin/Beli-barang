@@ -54,23 +54,22 @@ const styles = StyleSheet.create({
     fontSize: resWidth(14),
     fontFamily: Fonts.primary[400],
     color: Colors.text.primary,
-    marginBottom: 4,
+    marginBottom: 8,
   },
   wrapDropdown: {
     width: '100%',
     paddingVertical: 0,
     backgroundColor: 'white',
-    paddingHorizontal: 0,
+    paddingRight: 8,
     borderColor: Colors.border.gray,
     borderWidth: 0.5,
-    borderRadius: 8,
+    borderRadius: 10,
   },
   wrapCustomButton: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingHorizontal: 18,
     backgroundColor: '#f8f8f8',
   },
   labelCustomButton: {
@@ -91,7 +90,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingHorizontal: 18,
     borderRadius: 10,
   },
   textdropdown: {
@@ -99,13 +97,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: '400',
     fontSize: 16,
-    marginHorizontal: 12,
   },
   wrapSearchDropdown: {
     backgroundColor: '#ffff',
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
-    paddingHorizontal: 24,
     borderRadius: 10,
   },
 });

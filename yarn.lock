@@ -6230,6 +6230,11 @@
   "resolved" "https://registry.npmjs.org/pirates/-/pirates-4.0.5.tgz"
   "version" "4.0.5"
 
+"pjs@*":
+  "integrity" "sha512-aoPrjtnYOknat/wiO5hyCkub7LymxSY1BN8gIsW49PfbdPyQiaU+UOo9DfSEhhl48cWLd28IwpERutBveLdQLA=="
+  "resolved" "https://registry.npmjs.org/pjs/-/pjs-5.1.2.tgz"
+  "version" "5.1.2"
+
 "pkg-dir@^3.0.0":
   "integrity" "sha512-/E57AYkoeQ25qkxMj5PBOVgF8Kiu/h7cYS30Z5+R7WaiCCBfLq58ZI/dSeaEKb9WVJV5n/03QwrN3IeWIFllvw=="
   "resolved" "https://registry.npmjs.org/pkg-dir/-/pkg-dir-3.0.0.tgz"
@@ -7515,6 +7520,13 @@
   dependencies:
     "readable-stream" "~2.3.6"
     "xtend" "~4.0.1"
+
+"thunk@^0.0.1":
+  "integrity" "sha512-pmOMtF63oJP7v+Hka9yRmcoPVeLGZtq2S0NwAh+rE8guWEOcg27dddYsJYZSJiKg4DTs/i71eaUDEvyCuTDNrg=="
+  "resolved" "https://registry.npmjs.org/thunk/-/thunk-0.0.1.tgz"
+  "version" "0.0.1"
+  dependencies:
+    "pjs" "*"
 
 "tmp@^0.2.1":
   "integrity" "sha512-76SUhtfqR2Ijn+xllcI5P1oyannHNHByD80W1q447gU3mp9G9PSpGdWmjUOHRDPiHYacIk66W7ubDTuPF3BEtQ=="

@@ -13,35 +13,35 @@ import {
   ButtonCustom,
   Gap,
 } from '../../Components/Atoms';
-import {Colors, resHeight, resWidth, Fonts} from './../../Utils';
+import {Colors, resHeight, resWidth, Fonts, useForm} from './../../Utils';
 import {showMessage} from 'react-native-flash-message';
 import {createUserWithEmailAndPassword} from 'firebase/auth';
 import {Authentication} from '../../../Firebase';
 
 const Register = ({navigation}) => {
-  const [user, setUser] = useState({
-    fullName: '',
+  const [form, setForm] = useForm({
+    name: '',
     email: '',
     password: '',
   });
   const validateRegister = () => {
-    if (!user.fullName) {
+    if (!form.name) {
       showMessage({
         message: 'Ups nama lengkap masih kosong nih, Yuk diisi dulu ya',
         type: 'danger',
       });
-    } else if (!user.email) {
+    } else if (!form.email) {
       showMessage({
         message: 'Email masih kosong nih, yuk diisi dulu ya',
         type: 'danger',
       });
-    } else if (!user.password) {
+    } else if (!form.password) {
       showMessage({
         message: 'Password kosong nih, yuk di isi dulu passwordnya',
         type: 'danger',
       });
     } else {
-      createUserWithEmailAndPassword(Authentication, user.email, user.password)
+      createUserWithEmailAndPassword(Authentication, form.email, form.password)
         .then(response => {
           const user = response.user;
           console.log(user);
@@ -55,23 +55,32 @@ const Register = ({navigation}) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log(errorCode);
-          if (errorCode === 'auth/email-already-exists') {
-            showMessage({
-              message: 'Email kamu sudah terdaftar nih, yuk langsung Login',
-              type: 'danger',
-            });
-          }
-          if (errorCode === 'auth/invalid-email') {
-            showMessage({
-              message: 'email tidak valid, yuk gunakan email yang valid',
-              type: 'danger',
-            });
-          }
-          if (errorCode === 'auth/weak-password') {
-            showMessage({
-              message: 'Pastikan password lebih dari 6 karakter ya..',
-              type: 'danger',
-            });
+          switch (errorCode) {
+            case errorCode === 'auth/email-already-exists':
+              return showMessage({
+                message: 'Email kamu sudah terdaftar nih, yuk langsung Login',
+                type: 'danger',
+              });
+            case errorCode === 'auth/invalid-email':
+              return showMessage({
+                message: 'email tidak valid, yuk gunakan email yang valid',
+                type: 'danger',
+              });
+            case errorCode === 'auth/weak-password':
+              return showMessage({
+                message: 'Pastikan password lebih dari 6 karakter ya..',
+                type: 'danger',
+              });
+            case errorCode === 'auth/email-already-in-use':
+              return showMessage({
+                message: 'email sudah terdaftar nih, yuk langsung login..',
+                type: 'danger',
+              });
+            default:
+              return showMessage({
+                message: 'Email kamu sudah terdaftar nih, yuk langsung Login',
+                type: 'danger',
+              });
           }
         });
     }
@@ -96,22 +105,22 @@ const Register = ({navigation}) => {
         <TextInputCustom
           label={'Full name:'}
           placeholder={`what's your name`}
-          value={user.fullName}
-          onChangeText={value => setUser('fullName', value)}
+          value={form.name}
+          onChangeText={value => setForm('name', value)}
         />
         <TextInputCustom
           label={'Email:'}
           placeholder={`input your email here`}
-          value={user.email}
-          onChangeText={value => setUser('email', value)}
+          value={form.email}
+          onChangeText={value => setForm('email', value)}
           keyboardType={'email-address'}
         />
         <TextInputCustom
           label={'Password:'}
           placeholder={`input your password here...`}
           secureTextEntry={true}
-          value={user.password}
-          onChangeText={value => setUser('password', value)}
+          value={form.password}
+          onChangeText={value => setForm('password', value)}
         />
         <Gap height={20} />
         <ButtonCustom text={'Continue'} onPress={validateRegister} />

@@ -6,27 +6,30 @@ import {
   Header,
   TextInputCustom,
 } from '../../Components/Atoms';
-import {Colors, resHeight, resWidth, Fonts} from './../../Utils';
+import {Colors, resHeight, resWidth, Fonts, useForm} from './../../Utils';
 import {showMessage} from 'react-native-flash-message';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {Authentication} from '../../../Firebase';
 
 const Login = ({navigation}) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [form, setForm] = useForm({
+    email: '',
+    password: '',
+  });
+
   const handleLogin = () => {
-    if (!email || email.length <= 8) {
+    if (!form.email) {
       showMessage({
         message: 'Email masih kosong / tidak valid nih.., isi yang benar ya',
         type: 'danger',
       });
-    } else if (!password || password.length <= 6) {
+    } else if (!form.password || form.password.length <= 6) {
       showMessage({
         message: 'Gunakan password minimal 6 karakter ya...',
         type: 'danger',
       });
     } else {
-      signInWithEmailAndPassword(Authentication, email, password)
+      signInWithEmailAndPassword(Authentication, form.email, form.password)
         .then(response => {
           const user = response.user;
           console.log(user);
@@ -34,7 +37,7 @@ const Login = ({navigation}) => {
             message: 'Login berhasil',
             type: 'success',
           });
-          navigation.navigate('Menu');
+          navigation.replace('Menu');
         })
         .catch(error => {
           const errorCode = error.code;
@@ -66,16 +69,16 @@ const Login = ({navigation}) => {
         <TextInputCustom
           label="Email:"
           placeholder={'Input your email here..'}
-          value={email}
-          onChangeText={value => setEmail(value)}
+          value={form.email}
+          onChangeText={value => setForm('email', value)}
           keyboardType="email-address"
         />
         <TextInputCustom
           label="Password:"
           placeholder={'input password here...'}
           secureTextEntry={true}
-          value={password}
-          onChangeText={value => setPassword(value)}
+          value={form.password}
+          onChangeText={value => setForm('password', value)}
         />
         <Gap height={10} />
         <ButtonCustom text={'Login'} onPress={handleLogin} />
