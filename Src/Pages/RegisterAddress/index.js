@@ -7,18 +7,19 @@ import {
   Gap,
   SelectPicker,
 } from '../../Components/Atoms';
-import {Colors, resHeight, resWidth, Fonts} from './../../Utils';
+import {showMessage} from 'react-native-flash-message';
+import {Colors, resHeight, resWidth, Fonts, useForm} from './../../Utils';
 
 const baseUrl = 'https://dev.farizdotid.com/api/daerahindonesia';
 
 const RegisterAddress = ({navigation}) => {
   const [listProvinsi, setListProvinsi] = useState([]);
 
-  const [data, setData] = useState({
+  const [data, setData] = useForm({
     phoneNumber: '',
-    provinsi: '',
-    kota: '',
-    kecamatan: '',
+    province: '',
+    city: '',
+    district: '',
     address: '',
   });
 
@@ -39,17 +40,31 @@ const RegisterAddress = ({navigation}) => {
   const handleRegister = () => {
     try {
       if (!data.phoneNumber) {
-        Alert.alert('Nomor hp masih kosong nih, yuk diisi dulu ya..');
+        showMessage({
+          message: 'Nomor hp masih kosong nih, yuk diisi dulu ya..',
+          type: 'danger',
+        });
       } else if (!data.provinsi) {
-        Alert.alert('pilih provinsi dulu ya..');
-      } else if (!data.kota) {
-        Alert.alert('Kolom kota masih kosong nih, yuk diisi dulu ya..');
-      } else if (!data.kecamatan) {
-        Alert.alert('Kolom kecamatan masih kosong nih, yuk diisi dulu ya..');
+        showMessage({
+          message: 'pilih provinsi dulu ya..',
+          type: 'danger',
+        });
+      } else if (!data.city) {
+        showMessage({
+          message: 'Kolom kota masih kosong nih, yuk diisi dulu ya..',
+          type: 'danger',
+        });
+      } else if (!data.district) {
+        showMessage({
+          message: 'Kolom kecamatan masih kosong nih, yuk diisi dulu ya..',
+          type: 'danger',
+        });
       } else if (!data.address) {
-        Alert.alert(
-          'Alamat lengkap kamu diisi dulu ya, biar pesanan kamu cepet sampainya...',
-        );
+        showMessage({
+          message:
+            'Alamat lengkap kamu diisi dulu ya, biar pesanan kamu cepet sampainya...',
+          type: 'danger',
+        });
       } else {
         navigation.navigate('RegisterSuccess');
         console.log('Login berhasil ya');
@@ -81,7 +96,7 @@ const RegisterAddress = ({navigation}) => {
           data={listProvinsi}
           searchPlaceHolder="Cari provinsi"
           onSelect={(selectedItem, index) => {
-            setData({...data, provinsi: selectedItem.nama});
+            setData({...data, province: selectedItem.nama});
           }}
           renderCustomizedButtonChild={(selectedItem, index) => {
             return (
@@ -103,14 +118,14 @@ const RegisterAddress = ({navigation}) => {
         <TextInputCustom
           label="Kota:"
           placeholder="dimana kota anda"
-          value={data.kota}
-          onChangeText={value => setData('kota', value)}
+          value={data.city}
+          onChangeText={value => setData('city', value)}
         />
         <TextInputCustom
           label="Kecamatan:"
           placeholder="dimana kecamatan anda"
-          value={data.kecamatan}
-          onChangeText={value => setData('kecamatan', value)}
+          value={data.district}
+          onChangeText={value => setData('district', value)}
         />
         <TextInputCustom
           label="Alamat lengkap:"
@@ -134,7 +149,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flexDirection: 'column',
-    marginTop: '5%',
+    marginVertical: '5%',
     marginHorizontal: resWidth(20),
     paddingHorizontal: resWidth(16),
     paddingVertical: resHeight(20),
@@ -153,7 +168,7 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
     fontWeight: '400',
-    fontSize: 16,
+    fontSize: 14,
     opacity: 0.6,
   },
   stylingBarisdropdown: {

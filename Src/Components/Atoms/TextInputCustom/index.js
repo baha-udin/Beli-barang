@@ -20,6 +20,7 @@ const TextInputCustom = ({
         value={value}
         onChangeText={onChangeText}
         keyboardType={keyboardType}
+        placeholderTextColor={Colors.text.secondary}
       />
     </View>
   );
