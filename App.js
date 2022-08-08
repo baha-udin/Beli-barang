@@ -7,19 +7,19 @@ import FlashMessage from 'react-native-flash-message';
 import {Provider} from 'react-redux';
 import Store from './Src/Redux/store';
 
+LogBox.ignoreLogs(['Warning: ...']);
+
 const App = () => {
   useEffect(() => {
     SplashScreen.hide();
   }, []);
-  LogBox.ignoreLogs(['Warning: ...']);
-
   return (
-    <NavigationContainer>
-      <Provider store={Store}>
+    <Provider store={Store}>
+      <NavigationContainer>
         <Router />
-      </Provider>
-      <FlashMessage position="top" animationDuration={400} />
-    </NavigationContainer>
+        <FlashMessage position="top" animationDuration={400} />
+      </NavigationContainer>
+    </Provider>
   );
 };
 

@@ -11,7 +11,7 @@ const initStateRegister = {
   address: '',
 };
 
-// create global state register in reducer
+// create state register in reducer
 const registerReducer = (state = initStateRegister, action) => {
   if (action.type === 'SET_REGISTER') {
     return {
