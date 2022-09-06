@@ -44,11 +44,6 @@ const RegisterAddress = ({navigation}) => {
           message: 'Nomor hp masih kosong nih, yuk diisi dulu ya..',
           type: 'danger',
         });
-      } else if (!data.provinsi) {
-        showMessage({
-          message: 'pilih provinsi dulu ya..',
-          type: 'danger',
-        });
       } else if (!data.city) {
         showMessage({
           message: 'Kolom kota masih kosong nih, yuk diisi dulu ya..',

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   ImageBackground,
   ScrollView,
@@ -14,6 +14,11 @@ import {Colors, Fonts, resWidth} from '../../Utils';
 import {ButtonCustom, Rating, Counter} from './../../Components/Atoms';
 
 const FoodDetail = ({navigation}) => {
+  const [totalItem, setTotalItem] = useState(0);
+  const handleMinus = () => {};
+  const handlePlus = () => {
+    return setTotalItem + 1;
+  };
   return (
     <View style={styles.container}>
       <StatusBar barStyle={'light-content'} backgroundColor={'black'} />
@@ -33,7 +38,7 @@ const FoodDetail = ({navigation}) => {
               <Text style={styles.title}>Cherry Healty</Text>
               <Rating />
             </View>
-            <Counter />
+            <Counter itemValue={totalItem} />
           </View>
           <View style={styles.mainDescription}>
             <Text style={styles.textDescription}>

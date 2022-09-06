@@ -10,12 +10,15 @@ import {Colors, resHeight, resWidth, Fonts, useForm} from './../../Utils';
 import {showMessage} from 'react-native-flash-message';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {Authentication} from '../../../Firebase';
+import {useDispatch, useSelector} from 'react-redux';
 
 const Login = ({navigation}) => {
   const [form, setForm] = useForm({
     email: '',
     password: '',
   });
+  const dispatch = useDispatch();
+  const registerReducer = useSelector(state => state.registerReducer);
 
   const handleLogin = () => {
     if (!form.email) {
@@ -29,10 +32,12 @@ const Login = ({navigation}) => {
         type: 'danger',
       });
     } else {
+      dispatch({type: 'SET_LOGIN', value: form});
       signInWithEmailAndPassword(Authentication, form.email, form.password)
         .then(response => {
           const user = response.user;
-          console.log(user);
+          // console.log(user);
+          console.log(`data Login ${registerReducer}`);
           showMessage({
             message: 'Login berhasil',
             type: 'success',
@@ -72,6 +77,7 @@ const Login = ({navigation}) => {
           value={form.email}
           onChangeText={value => setForm('email', value)}
           keyboardType="email-address"
+          iconName="email"
         />
         <TextInputCustom
           label="Password:"
@@ -79,6 +85,7 @@ const Login = ({navigation}) => {
           secureTextEntry={true}
           value={form.password}
           onChangeText={value => setForm('password', value)}
+          iconName="shield-lock"
         />
         <Gap height={10} />
         <ButtonCustom text={'Login'} onPress={handleLogin} />

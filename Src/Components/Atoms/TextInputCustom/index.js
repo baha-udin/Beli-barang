@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View, TextInput, Platform} from 'react-native';
 import {Fonts, Colors, resWidth} from '../../../Utils';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const TextInputCustom = ({
   label,
@@ -9,19 +10,24 @@ const TextInputCustom = ({
   value,
   onChangeText,
   keyboardType,
+  iconName,
 }) => {
+  const [isPassword, setIsPassword] = useState(false);
   return (
     <View style={styles.section}>
       <Text style={styles.label}>{label}</Text>
-      <TextInput
-        placeholder={placeholder}
-        style={styles.textInput}
-        secureTextEntry={secureTextEntry}
-        value={value}
-        onChangeText={onChangeText}
-        keyboardType={keyboardType}
-        placeholderTextColor={Colors.text.secondary}
-      />
+      <View style={styles.wrapInput}>
+        <TextInput
+          placeholder={placeholder}
+          style={styles.textInput}
+          value={value}
+          onChangeText={onChangeText}
+          keyboardType={keyboardType}
+          placeholderTextColor={Colors.text.secondary}
+          secureTextEntry={secureTextEntry}
+        />
+        <Icon style={styles.icon} name={iconName} />
+      </View>
     </View>
   );
 };
@@ -38,12 +44,21 @@ const styles = StyleSheet.create({
     color: Colors.text.primary,
     marginBottom: 8,
   },
-  textInput: {
-    paddingHorizontal: 16,
-    borderColor: Colors.border.gray,
-    borderWidth: 0.7,
+  wrapInput: {
+    backgroundColor: Colors.background.white,
     borderRadius: 10,
-    paddingVertical: Platform.OS === 'android' ? 8 : 14,
+    paddingHorizontal: 16,
+    paddingVertical: Platform.OS === 'android' ? 8 : 16,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  icon: {
+    fontSize: 24,
+    color: Colors.background.gray,
+    marginRight: 8,
+  },
+  textInput: {
     color: Colors.text.primary,
     fontSize: 13,
     letterSpacing: 1,

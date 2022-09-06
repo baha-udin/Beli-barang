@@ -17,15 +17,18 @@ import {Colors, resHeight, resWidth, Fonts, useForm} from './../../Utils';
 import {showMessage} from 'react-native-flash-message';
 import {createUserWithEmailAndPassword} from 'firebase/auth';
 import {Authentication} from '../../../Firebase';
+import {useDispatch, useSelector} from 'react-redux';
 
 const Register = ({navigation}) => {
+  const dispatch = useDispatch();
   const [form, setForm] = useForm({
     name: '',
     email: '',
     password: '',
   });
   const validateRegister = () => {
-    if (!form.name) {
+    console.log('data form: ', form);
+    if (form.name == '') {
       showMessage({
         message: 'Ups nama lengkap masih kosong nih, Yuk diisi dulu ya',
         type: 'danger',
@@ -44,7 +47,7 @@ const Register = ({navigation}) => {
       createUserWithEmailAndPassword(Authentication, form.email, form.password)
         .then(response => {
           const user = response.user;
-          console.log(user);
+          dispatch({type: 'SET_REGISTER', value: form});
           showMessage({
             message: 'Register berhasil',
             type: 'success',
@@ -53,35 +56,35 @@ const Register = ({navigation}) => {
         })
         .catch(error => {
           const errorCode = error.code;
-          const errorMessage = error.message;
           console.log(errorCode);
-          switch (errorCode) {
-            case errorCode === 'auth/email-already-exists':
-              return showMessage({
-                message: 'Email kamu sudah terdaftar nih, yuk langsung Login',
-                type: 'danger',
-              });
-            case errorCode === 'auth/invalid-email':
-              return showMessage({
-                message: 'email tidak valid, yuk gunakan email yang valid',
-                type: 'danger',
-              });
-            case errorCode === 'auth/weak-password':
-              return showMessage({
-                message: 'Pastikan password lebih dari 6 karakter ya..',
-                type: 'danger',
-              });
-            case errorCode === 'auth/email-already-in-use':
-              return showMessage({
-                message: 'email sudah terdaftar nih, yuk langsung login..',
-                type: 'danger',
-              });
-            default:
-              return showMessage({
-                message: 'Email kamu sudah terdaftar nih, yuk langsung Login',
-                type: 'danger',
-              });
-          }
+          // switch (errorCode) {
+          //   case errorCode === 'auth/email-already-exists':
+          //     return showMessage({
+          //       message: 'Email kamu sudah terdaftar nih, yuk langsung Login',
+          //       type: 'danger',
+          //     });
+          //     navigation.navigate('Register');
+          //   case errorCode === 'auth/invalid-email':
+          //     return showMessage({
+          //       message: 'email tidak valid, yuk gunakan email yang valid',
+          //       type: 'danger',
+          //     });
+          //   case errorCode === 'auth/weak-password':
+          //     return showMessage({
+          //       message: 'Pastikan password lebih dari 6 karakter ya..',
+          //       type: 'danger',
+          //     });
+          //   case errorCode === 'auth/email-already-in-use':
+          //     return showMessage({
+          //       message: 'email sudah terdaftar nih, yuk langsung login..',
+          //       type: 'danger',
+          //     });
+          //   default:
+          //     return showMessage({
+          //       message: 'Email kamu sudah terdaftar nih, yuk langsung Login',
+          //       type: 'danger',
+          //     });
+          // }
         });
     }
   };
@@ -107,6 +110,7 @@ const Register = ({navigation}) => {
           placeholder={`what's your name`}
           value={form.name}
           onChangeText={value => setForm('name', value)}
+          iconName="account"
         />
         <TextInputCustom
           label={'Email:'}
@@ -114,6 +118,7 @@ const Register = ({navigation}) => {
           value={form.email}
           onChangeText={value => setForm('email', value)}
           keyboardType={'email-address'}
+          iconName="email"
         />
         <TextInputCustom
           label={'Password:'}
@@ -121,6 +126,7 @@ const Register = ({navigation}) => {
           secureTextEntry={true}
           value={form.password}
           onChangeText={value => setForm('password', value)}
+          iconName="shield-lock-outline"
         />
         <Gap height={20} />
         <ButtonCustom text={'Continue'} onPress={validateRegister} />
@@ -135,7 +141,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background.white,
   },
   content: {
-    marginTop: '20%',
+    marginVertical: '20%',
+
     marginHorizontal: resWidth(20),
     paddingHorizontal: resWidth(12),
     paddingVertical: resHeight(20),
